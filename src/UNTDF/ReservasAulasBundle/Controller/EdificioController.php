@@ -3,8 +3,10 @@
 namespace UNTDF\ReservasAulasBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 use UNTDF\ReservasAulasBundle\Entity\Edificio;
+
 
 class EdificioController extends Controller
 {
@@ -44,17 +46,52 @@ class EdificioController extends Controller
 
     }
 
-    public function newAction(Request $request)
-    {
+    public function createAction(Request $request){
+        
         $edificio = new Edificio();
 
         if (!$edificio) {
             throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
         }else{
             $form = $this->createFormBuilder($edificio)
-                ->add('nombre', 'text')
-                ->add('grabar', 'submit')
-                ->getForm();
+                    ->add('nombre', 'text')
+                    ->add('grabar', 'submit')
+                    ->setAction($this->generateUrl('edificio/create'))
+                    ->setMethod('POST')
+                    ->getForm();
+        }
+
+        $form->handleRequest($request);
+        
+        if($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($edificio);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('edificio',array('id' => $edificio->getId())));
+        }
+        
+        return $this->render('UNTDFReservasAulasBundle:Edificio:new.html.twig', array(
+            'form' => $form->createView(),
+        ));
+        
+    }
+    
+    
+    public function newAction()
+    {
+        
+        $edificio = new Edificio();
+
+        if (!$edificio) {
+            throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
+        }else{
+            $form = $this->createFormBuilder($edificio)
+                    ->add('nombre', 'text')
+                    ->add('grabar', 'submit')
+                    ->setAction($this->generateUrl('edificio/create'))
+                    ->setMethod('POST')
+                    ->getForm();
         }
 
         /*
