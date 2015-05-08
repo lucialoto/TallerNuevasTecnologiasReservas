@@ -56,7 +56,7 @@ class EdificioController extends Controller
             $form = $this->createFormBuilder($edificio)
                     ->add('nombre', 'text')
                     ->add('grabar', 'submit')
-                    ->setAction($this->generateUrl('edificio/create'))
+                    ->setAction($this->generateUrl('edificio/crear'))
                     ->setMethod('POST')
                     ->getForm();
         }
@@ -89,7 +89,7 @@ class EdificioController extends Controller
             $form = $this->createFormBuilder($edificio)
                     ->add('nombre', 'text')
                     ->add('grabar', 'submit')
-                    ->setAction($this->generateUrl('edificio/create'))
+                    ->setAction($this->generateUrl('edificio/crear'))
                     ->setMethod('POST')
                     ->getForm();
         }
