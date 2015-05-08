@@ -1,0 +1,21 @@
+untdf_reservas_aulas_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UNTDFReservasAulasBundle:Default:index }
+
+edificios:
+    path: /edificios
+    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:index }
+    
+edificio/agregar:
+    path: /edificio/agregar
+    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:new }
+
+edificio/borrar:
+    path: /edificio/borrar/{id}
+    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:remove }
+
+edificio:
+    path: /edificio/{id}
+    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:show }
+    
+
