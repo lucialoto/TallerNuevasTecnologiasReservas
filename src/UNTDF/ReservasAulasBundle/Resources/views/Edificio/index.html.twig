@@ -1,13 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body %} 
+    <a href="{{path('edificio/agregar')}}">AGREGAR</a>
     {% for edificio in edificios %}
         <p> {{ edificio.id }} {{ edificio.nombre}} 
             <a href="{{path('edificio',{'id':edificio.id})}}">VER</a>
             <a href="{{path('edificio/borrar',{'id':edificio.id})}}">BORRAR</a>
         </p>
     {% endfor %} 
-    <a href="{{path('edificio/agregar')}}">AGREGAR</a>
 {% endblock %}
 
 

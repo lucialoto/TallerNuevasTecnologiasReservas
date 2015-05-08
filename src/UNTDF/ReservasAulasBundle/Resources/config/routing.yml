@@ -9,10 +9,12 @@ edificios:
 edificio/agregar:
     path: /edificio/agregar
     defaults: { _controller: UNTDFReservasAulasBundle:Edificio:new }
+    methods : [POST]
 
 edificio/borrar:
     path: /edificio/borrar/{id}
     defaults: { _controller: UNTDFReservasAulasBundle:Edificio:remove }
+    methods : [POST, PUT]
 
 edificio:
     path: /edificio/{id}

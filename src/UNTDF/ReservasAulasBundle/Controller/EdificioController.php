@@ -44,12 +44,12 @@ class EdificioController extends Controller
 
     }
 
-    public function newAction()
+    public function newAction(Request $request)
     {
         $edificio = new Edificio();
 
         if (!$edificio) {
-            throw $this->createNotFoundException('(new) No hay edificios con ese codigo : '.$id);
+            throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
         }else{
             $form = $this->createFormBuilder($edificio)
                 ->add('nombre', 'text')
@@ -57,6 +57,13 @@ class EdificioController extends Controller
                 ->getForm();
         }
 
+        /*
+        $form->handleRequest($request);
+        if($form->isValid()){
+            return $this->redirect($this->generateUrl('task_success'));
+        }
+        */
+        
         return $this->render('UNTDFReservasAulasBundle:Edificio:new.html.twig', array(
             'form' => $form->createView(),
         ));
