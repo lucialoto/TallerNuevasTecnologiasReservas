@@ -49,16 +49,12 @@ class EdificioController extends Controller
         
         $edificio = new Edificio();
 
-        if (!$edificio) {
-            throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
-        }else{
-            $form = $this->createFormBuilder($edificio)
-                    ->add('nombre', 'text')
-                    ->add('grabar', 'submit')
-                    ->setAction($this->generateUrl('edificio/crear'))
-                    ->setMethod('POST')
-                    ->getForm();
-        }
+        $form = $this->createFormBuilder($edificio)
+                ->add('nombre', 'text')
+                ->add('grabar', 'submit', ['label' => 'Crear Edificio (crear)'])
+                ->setAction($this->generateUrl('edificio/crear'))
+                ->setMethod('POST')
+                ->getForm();
 
         $form->handleRequest($request);
         
@@ -81,23 +77,12 @@ class EdificioController extends Controller
         
         $edificio = new Edificio();
 
-        if (!$edificio) {
-            throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
-        }else{
-            $form = $this->createFormBuilder($edificio)
-                    ->add('nombre', 'text')
-                    ->add('grabar', 'submit')
-                    ->setAction($this->generateUrl('edificio/crear'))
-                    ->setMethod('POST')
-                    ->getForm();
-        }
-
-        /*
-        $form->handleRequest($request);
-        if($form->isValid()){
-            return $this->redirect($this->generateUrl('task_success'));
-        }
-        */
+        $form = $this->createFormBuilder($edificio)
+                ->add('nombre', 'text')
+                ->add('grabar', 'submit', ['label' => 'Crear Edificio (crear)'])
+                ->setAction($this->generateUrl('edificio/crear'))
+                ->setMethod('POST')
+                ->getForm();
         
         return $this->render('UNTDFReservasAulasBundle:Edificio:new.html.twig', array(
             'form' => $form->createView(),
@@ -110,7 +95,7 @@ class EdificioController extends Controller
         $edificio  = $this->getDoctrine()->getRepository('UNTDFReservasAulasBundle:Edificio')->find($id);
 
         if (!$edificio) {
-            throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
+            throw $this->createNotFoundException('(edit) No se pudo acceder a la entidad Edificio con el id '.$id);
         }else{
             $form = $this->createFormBuilder($edificio)
                     ->add('nombre', 'text')
@@ -130,7 +115,7 @@ class EdificioController extends Controller
         $edificio  = $this->getDoctrine()->getRepository('UNTDFReservasAulasBundle:Edificio')->find($id);
 
         if (!$edificio) {
-            throw $this->createNotFoundException('(new) No se pudo crear la entidad Edificio');
+            throw $this->createNotFoundException('(update) No se pudo acceder a la entidad Edificio con el id '.$id);
         }else{
             $form = $this->createFormBuilder($edificio)
                     ->add('nombre', 'text')

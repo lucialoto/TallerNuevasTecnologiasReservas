@@ -5,4 +5,9 @@ UNTDF\ReservasAulasBundle\Entity\Edificio:
                 message: no puede estar en blanco.
             - NotNull:
                 message: no puede ser nulo.
+            - Length:
+                min: 3
+                max: 100
+                minMessage: "El nombre del edificio tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del edificio tiene que tener como maximo {{ limit }} caracteres."
             
