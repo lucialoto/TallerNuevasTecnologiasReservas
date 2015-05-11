@@ -109,8 +109,8 @@ class EdificioController extends Controller
             'form' => $form->createView(),
         ));
     }
-
-        public function updateAction(Request $request, $id){
+    
+    public function updateAction(Request $request, $id){
         
         $edificio  = $this->getDoctrine()->getRepository('UNTDFReservasAulasBundle:Edificio')->find($id);
 
