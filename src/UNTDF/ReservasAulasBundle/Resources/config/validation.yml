@@ -1,0 +1,6 @@
+UNTDF\ReservasAulasBundle\Entity\Edificio:
+    properties:
+        nombre:
+            - NotBlank: ~ 
+            - NotNull: ~
+            
