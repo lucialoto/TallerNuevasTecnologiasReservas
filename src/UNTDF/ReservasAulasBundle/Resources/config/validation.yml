@@ -1,6 +1,8 @@
 UNTDF\ReservasAulasBundle\Entity\Edificio:
     properties:
         nombre:
-            - NotBlank: ~ 
-            - NotNull: ~
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
             
