@@ -15,12 +15,21 @@ edificio/crear:
     defaults: { _controller: UNTDFReservasAulasBundle:Edificio:create }
     methods : [POST]
 
+edificio/edit:
+    path: /edificio/edit/{id}
+    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:edit }
+
+edificio/update:
+    path: /edificio/update/{id}
+    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:update }
+    methods : [POST]
+
 edificio/borrar:
     path: /edificio/borrar/{id}
     defaults: { _controller: UNTDFReservasAulasBundle:Edificio:remove }
 
-edificio:
-    path: /edificio/{id}
+edificio/ver:
+    path: /edificio/ver/{id}
     defaults: { _controller: UNTDFReservasAulasBundle:Edificio:show }
     
 
