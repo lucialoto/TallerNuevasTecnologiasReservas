@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+//use UNTDF\ReservasAulasBundle\Entity\Edificio;
+
 class AulaType extends AbstractType
 {
     /**
@@ -18,7 +20,7 @@ class AulaType extends AbstractType
             ->add('nombre')
             ->add('edificio','entity',array(
                 'class' => 'UNTDFReservasAulasBundle:Edificio',
-                'property' => 'edificio'
+                'property' => 'nombre'
             ))
         ;
     }
