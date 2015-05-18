@@ -1,14 +1,23 @@
 {% extends '::base.html.twig' %}
 
 {% block body %} 
-    <a href="{{path('edificio/agregar')}}">AGREGAR</a>
-    {% for edificio in edificios %}
-        <p>   
-            <a href="{{path('edificio/ver',{'id':edificio.id})}}">{{ edificio.id }}</a> {{ edificio.nombre}}
-            <a href="{{path('edificio/edit',{'id':edificio.id})}}">UPDATE</a>
-            <a href="{{path('edificio/borrar',{'id':edificio.id})}}">BORRAR</a>
-        </p>
-    {% endfor %} 
+        <table class="table table-bordered"> 
+            <thead>
+                <th>Codigo</th> 
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </thead>
+            <tbody>
+                <a href="{{path('edificio/agregar')}}">AGREGAR</a>
+                {% for edificio in edificios %}
+                    <tr>
+                        <td><a href="{{path('edificio/ver',{'id':edificio.id})}}">{{ edificio.id }}</a></td> 
+                        <td>{{ edificio.nombre}}</td>
+                        <td><a href="{{path('edificio/edit',{'id':edificio.id})}}">UPD.</a><a href="{{path('edificio/borrar',{'id':edificio.id})}}">DEL.</a></td>
+                    </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
 {% endblock %}
 
 

@@ -3,14 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/css/bootstrap.min.css')}}" />
+        
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-	<p>llamo al bloque body</p>
         {% block body %}{% endblock %}
-	<p>llamo al bloque javascript</p>
         {% block javascripts %}{% endblock %}
-	<p>nada mas ?</p>
+       
+        <script src="{{ asset('bundles/untdfreservasaulas/js/jquery-2.1.4.min.js')}}"></script>
+        <script src="{{ asset('bundles/untdfreservasaulas/js/bootstrap.min.js')}}"></script>
     </body>
 </html>
