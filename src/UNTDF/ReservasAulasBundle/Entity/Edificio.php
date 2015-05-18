@@ -3,6 +3,7 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -10,16 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Edificio
 {
-    /* 
-    * @ORM\OneToMany(targetEntity="Aula", mappedBy="edificio")
-    */
     
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    
     protected $id;
 
     /**
@@ -27,6 +24,9 @@ class Edificio
      */
     protected $nombre;
 
+    /* 
+    * @ORM\OneToMany(targetEntity="Aula", mappedBy="edificio")
+    */
     protected $aulas;
 
     public function __construct()

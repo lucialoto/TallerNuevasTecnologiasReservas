@@ -13,11 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Aula
 {
     
-    /**
-     * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="aulas")
-     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
-     */
-    
+ 
     /**
      * @var integer
      *
@@ -35,12 +31,10 @@ class Aula
     private $nombre;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="edificio_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Edificio", inversedBy="aulas")
+     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
      */
     protected $edificio;
-
 
     /**
      * Get id
