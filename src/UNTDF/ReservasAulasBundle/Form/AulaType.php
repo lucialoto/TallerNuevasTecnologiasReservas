@@ -16,9 +16,9 @@ class AulaType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('edificio','Entity',array(
-                'class' => 'UNTDFReservasAulasBundle:Edificio', 
-                'property' => 'nombre'
+            ->add('edificio','entity',array(
+                'class' => 'UNTDFReservasAulasBundle:Edificio',
+                'property' => 'edificio'
             ))
         ;
     }

@@ -4,16 +4,13 @@ namespace UNTDF\ReservasAulasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use UNTDF\ReservasAulasBundle\Entity\Aula;
 use UNTDF\ReservasAulasBundle\Form\AulaType;
 
 /**
  * Aula controller.
  *
- * @Route("/aula")
  */
 class AulaController extends Controller
 {
@@ -21,9 +18,6 @@ class AulaController extends Controller
     /**
      * Lists all Aula entities.
      *
-     * @Route("/", name="aula")
-     * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
@@ -31,16 +25,13 @@ class AulaController extends Controller
 
         $entities = $em->getRepository('UNTDFReservasAulasBundle:Aula')->findAll();
 
-        return array(
+        return $this->render('UNTDFReservasAulasBundle:Aula:index.html.twig', array(
             'entities' => $entities,
-        );
+        ));
     }
     /**
      * Creates a new Aula entity.
      *
-     * @Route("/", name="aula_create")
-     * @Method("POST")
-     * @Template("UNTDFReservasAulasBundle:Aula:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -53,13 +44,13 @@ class AulaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('aula_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('aulas_show', array('id' => $entity->getId())));
         }
 
-        return array(
+        return $this->render('UNTDFReservasAulasBundle:Aula:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
@@ -72,7 +63,7 @@ class AulaController extends Controller
     private function createCreateForm(Aula $entity)
     {
         $form = $this->createForm(new AulaType(), $entity, array(
-            'action' => $this->generateUrl('aula_create'),
+            'action' => $this->generateUrl('aulas_create'),
             'method' => 'POST',
         ));
 
@@ -84,27 +75,21 @@ class AulaController extends Controller
     /**
      * Displays a form to create a new Aula entity.
      *
-     * @Route("/new", name="aula_new")
-     * @Method("GET")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Aula();
         $form   = $this->createCreateForm($entity);
 
-        return array(
+        return $this->render('UNTDFReservasAulasBundle:Aula:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
      * Finds and displays a Aula entity.
      *
-     * @Route("/{id}", name="aula_show")
-     * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -118,18 +103,15 @@ class AulaController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('UNTDFReservasAulasBundle:Aula:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
      * Displays a form to edit an existing Aula entity.
      *
-     * @Route("/{id}/edit", name="aula_edit")
-     * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -144,11 +126,11 @@ class AulaController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('UNTDFReservasAulasBundle:Aula:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
@@ -161,7 +143,7 @@ class AulaController extends Controller
     private function createEditForm(Aula $entity)
     {
         $form = $this->createForm(new AulaType(), $entity, array(
-            'action' => $this->generateUrl('aula_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('aulas_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,9 +154,6 @@ class AulaController extends Controller
     /**
      * Edits an existing Aula entity.
      *
-     * @Route("/{id}", name="aula_update")
-     * @Method("PUT")
-     * @Template("UNTDFReservasAulasBundle:Aula:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -193,20 +172,18 @@ class AulaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('aula_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('aulas_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('UNTDFReservasAulasBundle:Aula:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
     /**
      * Deletes a Aula entity.
      *
-     * @Route("/{id}", name="aula_delete")
-     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {
@@ -225,7 +202,7 @@ class AulaController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('aula'));
+        return $this->redirect($this->generateUrl('aulas'));
     }
 
     /**
@@ -238,7 +215,7 @@ class AulaController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('aula_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('aulas_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

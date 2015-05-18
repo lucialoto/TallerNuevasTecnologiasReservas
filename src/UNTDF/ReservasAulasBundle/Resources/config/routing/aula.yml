@@ -1,0 +1,30 @@
+aulas:
+    path:     /
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:index" }
+
+aulas_show:
+    path:     /{id}/show
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:show" }
+
+aulas_new:
+    path:     /new
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:new" }
+
+aulas_create:
+    path:     /create
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:create" }
+    methods:  POST
+
+aulas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:edit" }
+
+aulas_update:
+    path:     /{id}/update
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:update" }
+    methods:  [POST, PUT]
+
+aulas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UNTDFReservasAulasBundle:Aula:delete" }
+    methods:  [POST, DELETE]

@@ -1,3 +1,7 @@
+untdf_reservas_aulas_aulas:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/aula.yml"
+    prefix:   /aulas
+
 untdf_reservas_aulas_homepage:
     path:     /hello/{name}
     defaults: { _controller: UNTDFReservasAulasBundle:Default:index }

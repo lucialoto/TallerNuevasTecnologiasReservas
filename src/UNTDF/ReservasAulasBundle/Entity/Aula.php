@@ -3,6 +3,7 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UNTDF\ReservasAulasBundle\Entity\Edificio;
 
 /**
  * Aula
