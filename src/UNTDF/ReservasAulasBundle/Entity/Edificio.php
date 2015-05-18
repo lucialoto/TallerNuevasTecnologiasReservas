@@ -10,9 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Edificio
 {
-    /* 
-    * @ORM\OneToMany(targetEntity="Aula", mappedBy="edificio")
-    */
     
     /**
      * @ORM\Column(type="integer")
@@ -27,6 +24,9 @@ class Edificio
      */
     protected $nombre;
 
+    /* 
+    * @ORM\OneToMany(targetEntity="Aula", mappedBy="edificio")
+    */
     protected $aulas;
 
     public function __construct()
