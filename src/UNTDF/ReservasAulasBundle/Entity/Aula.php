@@ -7,14 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Aula
  *
- * @ORM\Table()
+ * @ORM\Table(name="aula")
  * @ORM\Entity
  */
 class Aula
 {
     
- 
-    /**
+     /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -70,9 +69,9 @@ class Aula
     }
 
     /**
-     * Set edificioId
+     * Set edificio
      *
-     * @param integer $edificio
+     * @param Edificio $edificio
      * @return Aula
      */
     public function setEdificio($edificio)
@@ -83,9 +82,9 @@ class Aula
     }
 
     /**
-     * Get edificioId
+     * Get edificio
      *
-     * @return integer 
+     * @return Edificio 
      */
     public function getEdificio()
     {
