@@ -10,11 +10,16 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Edificio
 {
+    /* 
+    * @ORM\OneToMany(targetEntity="Aula", mappedBy="edificio")
+    */
+    
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+    
     protected $id;
 
     /**
@@ -22,17 +27,25 @@ class Edificio
      */
     protected $nombre;
 
-	function setNombre($nombre){
-		$this->nombre = $nombre;
-	}
+    protected $aulas;
 
-	function getNombre(){
-		return $this->nombre;
-	}
+    public function __construct()
+    {
+        $this->aulas = new ArrayCollection();
+    }
+    
+    function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
 
-	function getId(){
-		return $this->id;
-	}
+    function getNombre(){
+        return $this->nombre;
+    }
+
+    function getId(){
+        return $this->id;
+    }
+
 }
 
 
