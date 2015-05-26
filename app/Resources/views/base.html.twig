@@ -12,9 +12,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <a href="{{path('edificios')}}">edificios</a>
-        <a href="{{path('aulas')}}">aulas</a>
-        <br/>
+        {% include '::navbar.html.twig' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
        

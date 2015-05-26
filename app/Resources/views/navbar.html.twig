@@ -1,24 +1,3 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        
-        <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/css/bootstrap.min.css')}}" />
-        
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
         <a href="{{path('edificios')}}">edificios</a>
         <a href="{{path('aulas')}}">aulas</a>
         <br/>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-       
-        <script src="{{ asset('bundles/untdfreservasaulas/js/jquery-2.1.4.min.js')}}"></script>
-        <script src="{{ asset('bundles/untdfreservasaulas/js/bootstrap.min.js')}}"></script>
-    </body>
-</html>
