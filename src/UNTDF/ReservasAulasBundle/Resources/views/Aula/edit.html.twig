@@ -1,9 +1,26 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Aula edit</h1>
+    <h1>Aula - Edición</h1>
 
-    {{ form(edit_form) }}
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        
+        <div>
+            {{ form_label(form.nombre) }}
+            {{ form_errors(form.nombre) }}
+            {{ form_widget(form.nombre) }}
+        </div>
+        <p>----------</p>
+        <div>
+            {{ form_label(form.edificio) }}
+            {{ form_errors(form.edificio) }}
+            {{ form_widget(form.edificio) }}
+        </div>
+        <p>----------</p>
+        
+        
+        {{ form_end(form) }}
 
         <ul class="record_actions">
     <li>
