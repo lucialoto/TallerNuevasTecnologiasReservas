@@ -32,7 +32,7 @@ twig:
     form: 
         resourses: ['bootstrap_3_layout.html.twig']
 
-# Assetic Configuration
+# AssetiNombrec Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
