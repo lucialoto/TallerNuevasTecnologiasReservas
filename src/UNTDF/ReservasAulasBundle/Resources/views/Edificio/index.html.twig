@@ -1,19 +1,22 @@
 {% extends '::base.html.twig' %}
 
-{% block body %} 
+{% block body %}
+        <h1>Edificios</h1>
+        <p><a class="btn btn-primary" href="{{path('edificio/agregar')}}"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
+        </p>
         <table class="table table-bordered"> 
             <thead>
-                <th>Codigo</th> 
+                <th>Id</th> 
                 <th>Nombre</th>
                 <th>Acciones</th>
             </thead>
             <tbody>
-                <a href="{{path('edificio/agregar')}}">AGREGAR</a>
                 {% for edificio in edificios %}
                     <tr>
                         <td><a href="{{path('edificio/ver',{'id':edificio.id})}}">{{ edificio.id }}</a></td> 
                         <td>{{ edificio.nombre}}</td>
-                        <td><a href="{{path('edificio/edit',{'id':edificio.id})}}">UPD.</a><a href="{{path('edificio/borrar',{'id':edificio.id})}}">DEL.</a></td>
+                        <td><a href="{{path('edificio/edit',{'id':edificio.id})}}">UPD.</a>
+                        <a href="{{path('edificio/borrar',{'id':edificio.id})}}">DEL.</a></td>
                     </tr>
                 {% endfor %} 
             </tbody>
