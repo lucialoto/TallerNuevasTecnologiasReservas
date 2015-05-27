@@ -1,8 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body %} 
-    <p> {{ edificio.id }} {{ edificio.nombre}} </p>
-    <a href="{{path('edificios')}}">VOLVER</a>
+    <h1>Edificio</h1>
+    <h3>Id <small>{{ edificio.id }}</small></h3>
+    <h3>Nombre <small>{{ edificio.nombre}}</small></h3>
+    
+    <fieldset class="buttons">
+        <a class="btn btn-primary" href="{{ path('edificios') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Lista</a>
+    
+        
+     </fieldset>
+       
 {% endblock %}
 
 
