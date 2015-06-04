@@ -1,3 +1,7 @@
+untdf_reservas_aulas_fechaespecial:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/fechaespecial.yml"
+    prefix:   /fechaespecial
+
 untdf_reservas_aulas_aulas:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/aula.yml"
     prefix:   /aulas
