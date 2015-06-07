@@ -1,3 +1,7 @@
+untdf_reservas_aulas_docente:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/docente.yml"
+    prefix:   /docente
+
 untdf_reservas_aulas_fechaespecial:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/fechaespecial.yml"
     prefix:   /fechaespecial
