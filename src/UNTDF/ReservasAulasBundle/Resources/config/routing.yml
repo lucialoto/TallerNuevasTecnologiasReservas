@@ -1,3 +1,7 @@
+untdf_reservas_aulas_carrera:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/carrera.yml"
+    prefix:   /carrera
+
 untdf_reservas_aulas_docente:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/docente.yml"
     prefix:   /docente
@@ -5,6 +9,10 @@ untdf_reservas_aulas_docente:
 untdf_reservas_aulas_fechaespecial:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/fechaespecial.yml"
     prefix:   /fechaespecial
+
+untdf_reservas_aulas_tipoactividad:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/tipoactividad.yml"
+    prefix:   /tipoactividad
 
 untdf_reservas_aulas_aulas:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/aula.yml"
