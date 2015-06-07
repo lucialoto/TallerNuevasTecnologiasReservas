@@ -1,0 +1,10 @@
+actividad:
+    path:     /
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:index" }
+
+actividad_show:
+    path:     /{id}/show
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:show" }
+
+
+

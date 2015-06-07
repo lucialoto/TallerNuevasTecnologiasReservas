@@ -17,12 +17,9 @@
             <tr>
                 <td><a href="{{ path('aulas_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nombre }}</td>
-                <td>
-                
-                        <a href="{{ path('aulas_show', { 'id': entity.id }) }}">show</a>
-                    
-                        <a href="{{ path('aulas_edit', { 'id': entity.id }) }}">edit</a>
-                    
+                <td>                
+                    <a href="{{ path('aulas_show', { 'id': entity.id }) }}">VER</a> - 
+                    <a href="{{ path('aulas_edit', { 'id': entity.id }) }}">BORRAR</a>
                 </ul>
                 </td>
             </tr>

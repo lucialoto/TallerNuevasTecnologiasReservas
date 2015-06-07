@@ -1,0 +1,10 @@
+curso:
+    path:     /
+    defaults: { _controller: "UNTDFReservasAulasBundle:Curso:index" }
+
+curso_show:
+    path:     /{id}/show
+    defaults: { _controller: "UNTDFReservasAulasBundle:Curso:show" }
+
+
+

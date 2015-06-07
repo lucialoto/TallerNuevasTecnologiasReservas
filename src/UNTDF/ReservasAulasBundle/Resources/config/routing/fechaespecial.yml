@@ -1,0 +1,30 @@
+fechaespecial:
+    path:     /
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:index" }
+
+fechaespecial_show:
+    path:     /{id}/show
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:show" }
+
+fechaespecial_new:
+    path:     /new
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:new" }
+
+fechaespecial_create:
+    path:     /create
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:create" }
+    methods:  POST
+
+fechaespecial_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:edit" }
+
+fechaespecial_update:
+    path:     /{id}/update
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:update" }
+    methods:  [POST, PUT]
+
+fechaespecial_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:delete" }
+    methods:  [POST, DELETE]
