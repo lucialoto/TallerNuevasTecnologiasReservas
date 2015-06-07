@@ -1,9 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>FechaEspecial list</h1>
-
-    <table class="records_list">
+    <h1>Fechas Especiales</h1>
+    <p><a class="btn btn-primary" href="{{ path('fechaespecial_new') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
+    </p>    
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,25 +20,12 @@
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.descripcion }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('fechaespecial_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('fechaespecial_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                    <a href="{{ path('fechaespecial_show', { 'id': entity.id }) }}">VER</a> - 
+                    <a href="{{ path('fechaespecial_edit', { 'id': entity.id }) }}">BORRAR</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('fechaespecial_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

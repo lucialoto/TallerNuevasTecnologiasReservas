@@ -15,8 +15,8 @@
                     <tr>
                         <td><a href="{{path('edificio/ver',{'id':edificio.id})}}">{{ edificio.id }}</a></td> 
                         <td>{{ edificio.nombre}}</td>
-                        <td><a href="{{path('edificio/edit',{'id':edificio.id})}}">UPD.</a>
-                        <a href="{{path('edificio/borrar',{'id':edificio.id})}}">DEL.</a></td>
+                        <td><a href="{{path('edificio/edit',{'id':edificio.id})}}">VER</a> - 
+                        <a href="{{path('edificio/borrar',{'id':edificio.id})}}">BORRAR</a></td>
                     </tr>
                 {% endfor %} 
             </tbody>
