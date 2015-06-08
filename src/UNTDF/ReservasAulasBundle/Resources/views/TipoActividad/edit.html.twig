@@ -3,12 +3,28 @@
 {% block body -%}
     <h1>TipoActividad edit</h1>
 
-    {{ form(edit_form) }}
+    {{ form_start(edit_form) }}
+        {{ form_errors(edit_form) }}
+        
+        <div>
+            {{ form_label(edit_form.nombre) }}
+            {{ form_errors(edit_form.nombre) }}
+            {{ form_widget(edit_form.nombre) }}
+        </div>
+        <p>----------</p>
+        <div>
+            {{ form_label(edit_form.cantidadHoras) }}
+            {{ form_errors(edit_form.cantidadHoras) }}
+            {{ form_widget(edit_form.cantidadHoras) }}
+        </div>
+        <p>----------</p>
+        
+        
+        {{ form_end(edit_form) }}
 
-        <ul class="record_actions">
     <li>
         <a href="{{ path('tipoactividad') }}">
-            Back to the list
+            Volver a la lista
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
