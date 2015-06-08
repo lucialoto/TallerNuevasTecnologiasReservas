@@ -43,10 +43,16 @@
         </li>
         
       </ul>
-{% endif %}
+
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ app.request.getBaseURL() }}/login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+          <li><a href="{{ path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logout</a></li>
       </ul>
+
+    {% else %}
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{ path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+      </ul>
+    {% endif %}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>     

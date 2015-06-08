@@ -1,3 +1,7 @@
+untdf_reservas_aulas_edificio:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/edificio.yml"
+    prefix:   /edificio
+
 untdf_reservas_aulas_carrera:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/carrera.yml"
     prefix:   /carrera
@@ -18,39 +22,13 @@ untdf_reservas_aulas_aulas:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/aula.yml"
     prefix:   /aulas
 
+untdf_reservas_aulas_edificios:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/edificio.yml"
+    prefix:   /edificios
+
 untdf_reservas_aulas_homepage:
     path:     /hello/{name}
     defaults: { _controller: UNTDFReservasAulasBundle:Default:index }
-
-edificios:
-    path: /edificios
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:index }
-    
-edificio/agregar:
-    path: /edificio/agregar
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:new }
-
-edificio/crear:
-    path: /edificio/crear
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:create }
-    methods : [POST]
-
-edificio/edit:
-    path: /edificio/edit/{id}
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:edit }
-
-edificio/update:
-    path: /edificio/update/{id}
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:update }
-    methods : [POST]
-
-edificio/borrar:
-    path: /edificio/borrar/{id}
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:remove }
-
-edificio/ver:
-    path: /edificio/ver/{id}
-    defaults: { _controller: UNTDFReservasAulasBundle:Edificio:show }
     
 ReservasMain:
     path: /

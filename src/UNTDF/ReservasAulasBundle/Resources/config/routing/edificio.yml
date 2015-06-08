@@ -1,0 +1,30 @@
+edificio:
+    path:     /
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:index" }
+
+edificio_show:
+    path:     /{id}/show
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:show" }
+
+edificio_new:
+    path:     /new
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:new" }
+
+edificio_create:
+    path:     /create
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:create" }
+    methods:  POST
+
+edificio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:edit" }
+
+edificio_update:
+    path:     /{id}/update
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:update" }
+    methods:  [POST, PUT]
+
+edificio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UNTDFReservasAulasBundle:Edificio:delete" }
+    methods:  [POST, DELETE]
