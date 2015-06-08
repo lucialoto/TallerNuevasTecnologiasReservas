@@ -1,38 +1,34 @@
 untdf_reservas_aulas_actividad:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/actividad.yml"
-    prefix:   /actividad
+    prefix:   /admin/actividad
 
 untdf_reservas_aulas_curso:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/curso.yml"
-    prefix:   /curso
+    prefix:   /admin/curso
     
 untdf_reservas_aulas_carrera:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/carrera.yml"
-    prefix:   /carrera
+    prefix:   /admin/carrera
 
 untdf_reservas_aulas_docente:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/docente.yml"
-    prefix:   /docente
+    prefix:   /admin/docente
 
 untdf_reservas_aulas_fechaespecial:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/fechaespecial.yml"
-    prefix:   /fechaespecial
+    prefix:   /admin/fechaespecial
 
 untdf_reservas_aulas_tipoactividad:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/tipoactividad.yml"
-    prefix:   /tipoactividad
+    prefix:   /admin/tipoactividad
 
 untdf_reservas_aulas_aulas:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/aula.yml"
-    prefix:   /aulas
+    prefix:   /admin/aulas
 
 untdf_reservas_aulas_edificios:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/edificio.yml"
-    prefix:   /edificios
-    
-untdf_reservas_aulas_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: UNTDFReservasAulasBundle:Default:index }
+    prefix:   /admin/edificios
     
 ReservasMain:
     path: /
