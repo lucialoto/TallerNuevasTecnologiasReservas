@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Principal{% endblock %}</title>
         
         <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/css/bootstrap.min.css')}}" />
                
@@ -16,14 +16,16 @@
         {% block navbar %}
         {% include '::navbar.html.twig' %}
         {% endblock %}
+        
         <div class="container theme-showcase" role="main">
         
-        {% block body %} {% endblock %}
+            {% block body %} {% endblock %}
+        
+        </div>
         {% block javascripts %}{% endblock %}
        
         <script src="{{ asset('bundles/untdfreservasaulas/js/jquery-2.1.4.min.js')}}"></script>
         <script src="{{ asset('bundles/untdfreservasaulas/js/bootstrap.min.js')}}"></script>
         
-        </div>
     </body>
 </html>
