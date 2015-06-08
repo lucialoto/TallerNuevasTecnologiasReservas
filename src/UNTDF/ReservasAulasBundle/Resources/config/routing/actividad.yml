@@ -1,10 +1,30 @@
-actividad:
+yes:
     path:     /
     defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:index" }
 
-actividad_show:
+yes_show:
     path:     /{id}/show
     defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:show" }
 
+yes_new:
+    path:     /new
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:new" }
 
+yes_create:
+    path:     /create
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:create" }
+    methods:  POST
 
+yes_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:edit" }
+
+yes_update:
+    path:     /{id}/update
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:update" }
+    methods:  [POST, PUT]
+
+yes_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UNTDFReservasAulasBundle:Actividad:delete" }
+    methods:  [POST, DELETE]
