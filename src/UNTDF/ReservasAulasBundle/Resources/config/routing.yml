@@ -52,5 +52,7 @@ edificio/ver:
     path: /edificio/ver/{id}
     defaults: { _controller: UNTDFReservasAulasBundle:Edificio:show }
     
-
+ReservasMain:
+    path: /
+    defaults: { _controller: UNTDFReservasAulasBundle:ReservasMain:index }
 
