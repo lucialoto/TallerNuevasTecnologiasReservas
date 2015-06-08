@@ -46,6 +46,11 @@ class Edificio
         return $this->id;
     }
 
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
 }
 
 
