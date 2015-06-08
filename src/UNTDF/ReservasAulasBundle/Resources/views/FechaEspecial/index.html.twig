@@ -7,7 +7,6 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Fecha</th>
                 <th>Descripcion</th>
                 <th>Actions</th>
@@ -16,12 +15,11 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('fechaespecial_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.descripcion }}</td>
                 <td>
-                    <a href="{{ path('fechaespecial_show', { 'id': entity.id }) }}">VER</a> - 
-                    <a href="{{ path('fechaespecial_edit', { 'id': entity.id }) }}">BORRAR</a>
+                    <a href="{{ path('fechaespecial_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-search"></span> VER</a> - 
+                    <a href="{{ path('fechaespecial_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                 </td>
             </tr>
         {% endfor %}
