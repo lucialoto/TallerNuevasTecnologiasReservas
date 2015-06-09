@@ -16,17 +16,17 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('yes_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('curso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.anio }}</td>
                 <td>{{ entity.cantHoras }}</td>
                 <td>{{ entity.nombre }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('yes_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('curso_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('yes_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('curso_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -37,7 +37,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('yes_new') }}">
+            <a href="{{ path('curso_new') }}">
                 Create a new entry
             </a>
         </li>
