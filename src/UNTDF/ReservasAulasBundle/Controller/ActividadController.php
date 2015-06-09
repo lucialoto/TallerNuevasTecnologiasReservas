@@ -44,7 +44,7 @@ class ActividadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('yes_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('actividad_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Actividad:new.html.twig', array(
@@ -63,7 +63,7 @@ class ActividadController extends Controller
     private function createCreateForm(Actividad $entity)
     {
         $form = $this->createForm(new ActividadType(), $entity, array(
-            'action' => $this->generateUrl('yes_create'),
+            'action' => $this->generateUrl('actividad_create'),
             'method' => 'POST',
         ));
 
@@ -143,7 +143,7 @@ class ActividadController extends Controller
     private function createEditForm(Actividad $entity)
     {
         $form = $this->createForm(new ActividadType(), $entity, array(
-            'action' => $this->generateUrl('yes_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('actividad_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,7 +172,7 @@ class ActividadController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('yes_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('actividad_edit', array('id' => $id)));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Actividad:edit.html.twig', array(
@@ -202,7 +202,7 @@ class ActividadController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('yes'));
+        return $this->redirect($this->generateUrl('actividad'));
     }
 
     /**
@@ -215,7 +215,7 @@ class ActividadController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('yes_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('actividad_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
