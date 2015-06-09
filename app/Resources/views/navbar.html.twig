@@ -42,12 +42,18 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logout</a></li>
+          <ul class="dropdown-menu" role="Usuario">
+            <li><a href="{{ path('fos_user_change_password')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Cambiar Password</a></li>
+            <li><a href="{{ path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Salir</a></li>
+          </ul>
       </ul>
 
     {% else %}
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{ path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User</a></li>
+          <ul class="dropdown-menu" role="Usuario">
+            <li><a href="{{ path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Ingresar</a></li>
+            <li><a href="{{ path('fos_user_resetting_request')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Pedir Cambio de Password</a></li>
+          </ul>
       </ul>
     {% endif %}
     </div><!-- /.navbar-collapse -->
