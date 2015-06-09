@@ -44,7 +44,7 @@ class CursoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('yes_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('curso_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Curso:new.html.twig', array(
@@ -63,7 +63,7 @@ class CursoController extends Controller
     private function createCreateForm(Curso $entity)
     {
         $form = $this->createForm(new CursoType(), $entity, array(
-            'action' => $this->generateUrl('yes_create'),
+            'action' => $this->generateUrl('curso_create'),
             'method' => 'POST',
         ));
 
@@ -143,7 +143,7 @@ class CursoController extends Controller
     private function createEditForm(Curso $entity)
     {
         $form = $this->createForm(new CursoType(), $entity, array(
-            'action' => $this->generateUrl('yes_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('curso_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,7 +172,7 @@ class CursoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('yes_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('curso_edit', array('id' => $id)));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Curso:edit.html.twig', array(
@@ -202,7 +202,7 @@ class CursoController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('yes'));
+        return $this->redirect($this->generateUrl('curso'));
     }
 
     /**
@@ -215,7 +215,7 @@ class CursoController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('yes_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('curso_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

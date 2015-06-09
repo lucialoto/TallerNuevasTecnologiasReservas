@@ -1,30 +1,30 @@
-yes:
+curso:
     path:     /
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:index" }
 
-yes_show:
+curso_show:
     path:     /{id}/show
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:show" }
 
-yes_new:
+curso_new:
     path:     /new
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:new" }
 
-yes_create:
+curso_create:
     path:     /create
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:create" }
     methods:  POST
 
-yes_edit:
+curso_edit:
     path:     /{id}/edit
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:edit" }
 
-yes_update:
+curso_update:
     path:     /{id}/update
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:update" }
     methods:  [POST, PUT]
 
-yes_delete:
+curso_delete:
     path:     /{id}/delete
     defaults: { _controller: "UNTDFReservasAulasBundle:Curso:delete" }
     methods:  [POST, DELETE]
