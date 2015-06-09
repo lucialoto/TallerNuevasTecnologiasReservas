@@ -42,18 +42,24 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hola, {{ app.user.username }}<span class="caret"></span></a>       
           <ul class="dropdown-menu" role="Usuario">
-            <li><a href="{{ path('fos_user_change_password')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Cambiar Password</a></li>
+            <li><a href="{{ path('fos_user_change_password')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Cambiar password</a></li>
             <li><a href="{{ path('fos_user_security_logout')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Salir</a></li>
           </ul>
+        </li>
       </ul>
 
     {% else %}
       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ingresar<span class="caret"></span></a>       
           <ul class="dropdown-menu" role="Usuario">
-            <li><a href="{{ path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Ingresar</a></li>
-            <li><a href="{{ path('fos_user_resetting_request')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Pedir Cambio de Password</a></li>
+            <li><a href="{{ path('fos_user_security_login')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Ingresar al sistema</a></li>
+            <li><a href="{{ path('fos_user_resetting_request')}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Olvide mi password</a></li>
           </ul>
+        </li>
       </ul>
     {% endif %}
     </div><!-- /.navbar-collapse -->
