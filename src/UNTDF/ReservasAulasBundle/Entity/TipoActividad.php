@@ -99,4 +99,9 @@ class TipoActividad
     {
         return $this->cantidadHoras;
     }
+    
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

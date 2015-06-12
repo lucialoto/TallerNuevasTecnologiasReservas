@@ -41,10 +41,10 @@ class Actividad extends Evento
     
     public function getTipoActividad()
     {
-        return $this->tipoaactividad;
+        return $this->tipoactividad;
     }
 
 
-    
+     
 }
 
