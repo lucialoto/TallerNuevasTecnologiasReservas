@@ -3,6 +3,7 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * TipoActividad
@@ -30,9 +31,20 @@ class TipoActividad
      * @ORM\Column(name="cantidadHoras", type="integer")
      */
     private $cantidadHoras;
+    
+    
+    /* 
+    * @ORM\OneToMany(targetEntity="Actividad", mappedBy="tipoactividad")
+    */
+    protected $actividades;
+    
+    function __construct() {
+        
+        $this->actividades = new ArrayCollection();
+        
+    }
 
-
-    /**
+        /**
      * Get id
      *
      * @return integer 
