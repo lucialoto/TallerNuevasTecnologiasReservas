@@ -17,7 +17,10 @@ class ActividadType extends AbstractType
         $builder
             ->add('nombre')
             ->add('tipoactividad','entity',array(
-                'class' => 'UNTDFReservasAulasBundle:TipoActividad'
+                'class' => 'UNTDFReservasAulasBundle:TipoActividad'/*,
+                'attr' => array(
+                    'multiple' => 'multiple'
+                )*/
             ))
         ;
     }
