@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
+
 class Reserva
 {
     /**
@@ -29,8 +30,8 @@ class Reserva
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Evento", inversedBy="aulas")
-     * @ORM\JoinColumn(name="edificio_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Evento", inversedBy="reservas")
+     * @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
      */
     protected $evento;
 

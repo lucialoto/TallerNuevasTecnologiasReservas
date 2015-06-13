@@ -2,12 +2,39 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\MappedSuperclass */
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="tipo_evento", type="string", length=20)
+ * @ORM\DiscriminatorMap({"actividad"="Actividad","curso"="Curso"})
+ */
 abstract class Evento
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
     
-    /** @ORM\Column(type="string") */
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
     protected $nombre;
+    
+    /* 
+    * @ORM\OneToMany(targetEntity="Reserva", mappedBy="evento")
+    */
+    protected $reservas;
+
+    public function __construct()
+    {
+        $this->reservas = new ArrayCollection();
+    }
     
     public function getNombre() {
         return $this->nombre;
@@ -23,4 +50,3 @@ abstract class Evento
     }
     
 }
-
