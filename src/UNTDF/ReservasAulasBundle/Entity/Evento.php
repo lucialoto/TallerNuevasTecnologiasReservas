@@ -4,6 +4,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="evento")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="tipo_evento", type="string", length=20)
  * @ORM\DiscriminatorMap({"actividad"="Actividad","curso"="Curso"})

@@ -4,13 +4,19 @@ namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use UNTDF\ReservasAulasBundle\Entity\Aula;
+use UNTDF\ReservasAulasBundle\Entity\Docente;
+use UNTDF\ReservasAulasBundle\Entity\Evento;
+use UNTDF\ReservasAulasBundle\Entity\Recurso;
+use UNTDF\ReservasAulasBundle\Entity\User;
+
+
 /**
  * Reserva
  *
- * @ORM\Table()
+ * @ORM\Table(name="reserva")
  * @ORM\Entity
  */
-
 class Reserva
 {
     /**
@@ -23,18 +29,61 @@ class Reserva
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Aula")
+     * @ORM\JoinColumn(name="aula_id", referencedColumnName="id")
      */
-    private $description;
-
+    protected $aula;
+    /**
+     * @ORM\ManyToOne(targetEntity="Docente")
+     * @ORM\JoinColumn(name="docente_id", referencedColumnName="id")
+     */
+    protected $docente;
+    
+     /**
+     * @ORM\ManyToMany(targetEntity="Recurso")
+     * @ORM\JoinTable(name="reserva_recursos",
+     *      joinColumns={@ORM\JoinColumn(name="reserva_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="recurso_id", referencedColumnName="id")}
+     *      )
+     **/
+    protected $recursos;
+ 
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $fecha;
+    /**
+     * @ORM\Column(type="time")
+     */
+    protected $horadesde;
+    /**
+     * @ORM\Column(type="time")
+     */
+    protected $horahasta;
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $estado;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $observacion;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="reserva_usuario_id", referencedColumnName="id")
+     */
+    protected $reservausuario;
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $reservafecha;
+    
     /**
      * @ORM\ManyToOne(targetEntity="Evento", inversedBy="reservas")
      * @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
      */
     protected $evento;
-
 
     /**
      * Get id
@@ -46,28 +95,6 @@ class Reserva
         return $this->id;
     }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Reserva
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
 
     /**
      * Set evento
@@ -91,4 +118,77 @@ class Reserva
     {
         return $this->evento;
     }
+
+    public function getAula() {
+        return $this->aula;
+    }
+
+    public function setAula($aula) {
+        $this->aula = $aula;
+    }
+    
+    public function getDocente() {
+        return $this->docente;
+    }
+
+    public function setDocente($docente) {
+        $this->docente = $docente;
+    }
+
+    public function getRecursos() {
+        return $this->recursos;
+    }
+
+    public function setRecursos($recursos) {
+        $this->recursos = $recursos;
+    }
+
+    public function setFechahoradesde($fechahoradesde) {
+        $this->fechahoradesde = $fechahoradesde;
+    }
+
+    public function getFechahoradesde() {
+        return $this->fechahoradesde;
+    }
+
+    public function setFechahorahasta($fechahorahasta) {
+        $this->fechahorahasta = $fechahorahasta;
+    }
+
+    public function getFechahorahasta() {
+        return $this->fechahorahasta;
+    }
+
+    public function getEstado() {
+        return $this->estado;
+    }
+
+    public function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+    public function getObservacion() {
+        return $this->observacion;
+    }
+
+    public function setObservacion($observacion) {
+        $this->observacion = $observacion;
+    }
+
+    public function getReservausuario() {
+        return $this->reservausuario;
+    }
+
+    public function setReservausuario($reservausuario) {
+        $this->reservausuario = $reservausuario;
+    }
+
+    public function getReservafecha() {
+        return $this->reservafecha;
+    }
+
+    public function setReservafecha($reservafecha) {
+        $this->reservafecha = $reservafecha;
+    }
+        
 }
