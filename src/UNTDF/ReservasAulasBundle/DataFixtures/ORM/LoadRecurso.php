@@ -5,9 +5,9 @@ namespace UNTDF\ReservasAulasBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use UNTDF\ReservasAulasBundle\Entity\User;
+use UNTDF\ReservasAulasBundle\Entity\Recurso;
 
-class LoadUsuarios implements FixtureInterface
+class LoadRecurso implements FixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -23,7 +23,7 @@ class LoadUsuarios implements FixtureInterface
         
         foreach( $recursos as $recursoValue ){
             
-            $recurso = new Edificio();
+            $recurso = new Recurso();
             $recurso->setNombre( $recursoValue );
             
             $manager->persist($recurso);
