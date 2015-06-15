@@ -15,11 +15,11 @@
             </tr>
             <tr>
                 <th>Horadesde</th>
-                <td>{{ entity.horadesde }}</td>
+                <td>{{ entity.horadesde|date('H:i:s') }}</td>
             </tr>
             <tr>
                 <th>Horahasta</th>
-                <td>{{ entity.horahasta }}</td>
+                <td>{{ entity.horahasta|date('H:i:s') }}</td>
             </tr>
             <tr>
                 <th>Estado</th>
@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <th>Reservafecha</th>
-                <td>{{ entity.reservafecha|date('Y-m-d H:i:s') }}</td>
+                <td>{{ entity.reservafecha|date('Y-m-d') }}</td>
             </tr>
         </tbody>
     </table>

@@ -12,6 +12,7 @@
                 <th>Horahasta</th>
                 <th>Estado</th>
                 <th>Observacion</th>
+                <th>Recursos</th>
                 <th>Reservafecha</th>
                 <th>Actions</th>
             </tr>
@@ -20,12 +21,13 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('reserva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.horadesde }}</td>
-                <td>{{ entity.horahasta }}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.horadesde %}{{ entity.horadesde|date('H:i:s') }}{% endif %}</td>
+                <td>{% if entity.horahasta %}{{ entity.horahasta|date('H:i:s') }}{% endif %}</td>
                 <td>{{ entity.estado }}</td>
                 <td>{{ entity.observacion }}</td>
-                <td>{% if entity.reservafecha %}{{ entity.reservafecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.obtenerListaRecursos() }}</td>
+                <td>{% if entity.reservafecha %}{{ entity.reservafecha|date('Y-m-d') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>

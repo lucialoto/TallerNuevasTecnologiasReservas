@@ -204,5 +204,14 @@ class Reserva
     public function setReservafecha($reservafecha) {
         $this->reservafecha = $reservafecha;
     }
+    
+    public function obtenerListaRecursos(){
+        $listarecursos = '';
+        foreach ($this->recursos as $recu) {
+            $listarecursos = $listarecursos . ' ' . $recu->getNombre();
+            $listarecursos = trim($listarecursos);
+        }
+        return $listarecursos;
+    }
         
 }
