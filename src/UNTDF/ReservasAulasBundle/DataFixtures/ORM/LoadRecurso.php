@@ -5,6 +5,8 @@ namespace UNTDF\ReservasAulasBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
+use UNTDF\ReservasAulasBundle\Entity\Recurso;
+
 class LoadRecurso implements FixtureInterface
 {
     /**
