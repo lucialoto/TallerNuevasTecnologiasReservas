@@ -91,4 +91,9 @@ class Aula
     {
         return $this->edificio;
     }
+    
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

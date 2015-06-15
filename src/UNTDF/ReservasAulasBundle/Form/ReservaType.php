@@ -21,11 +21,13 @@ class ReservaType extends AbstractType
             ->add('estado')
             ->add('observacion')
             ->add('reservafecha')
-            ->add('aula')
-            ->add('docente')
-            ->add('recursos')
+            ->add('aula','entity',array('class' => 'UNTDFReservasAulasBundle:Aula'))
+            ->add('docente','entity',array('class' => 'UNTDFReservasAulasBundle:Docente'))
+            ->add('recursos','entity',
+                    array('class' => 'UNTDFReservasAulasBundle:Recurso',
+                    'attr' => array('multiple' => 'multiple')))
             ->add('reservausuario')
-            ->add('evento')
+            ->add('evento','entity',array('class' => 'UNTDFReservasAulasBundle:Evento'))
         ;
     }
     

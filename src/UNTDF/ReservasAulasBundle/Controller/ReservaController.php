@@ -44,7 +44,7 @@ class ReservaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_reserva_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('reserva_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Reserva:new.html.twig', array(
@@ -63,7 +63,7 @@ class ReservaController extends Controller
     private function createCreateForm(Reserva $entity)
     {
         $form = $this->createForm(new ReservaType(), $entity, array(
-            'action' => $this->generateUrl('admin_reserva_create'),
+            'action' => $this->generateUrl('reserva_create'),
             'method' => 'POST',
         ));
 
@@ -143,7 +143,7 @@ class ReservaController extends Controller
     private function createEditForm(Reserva $entity)
     {
         $form = $this->createForm(new ReservaType(), $entity, array(
-            'action' => $this->generateUrl('admin_reserva_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('reserva_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,7 +172,7 @@ class ReservaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_reserva_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('reserva_edit', array('id' => $id)));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Reserva:edit.html.twig', array(
@@ -202,7 +202,7 @@ class ReservaController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_reserva'));
+        return $this->redirect($this->generateUrl('reserva'));
     }
 
     /**
@@ -215,7 +215,7 @@ class ReservaController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_reserva_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('reserva_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

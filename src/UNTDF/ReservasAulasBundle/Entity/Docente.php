@@ -87,4 +87,9 @@ class Docente
     {
         return $this->dni;
     }
+    
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 }

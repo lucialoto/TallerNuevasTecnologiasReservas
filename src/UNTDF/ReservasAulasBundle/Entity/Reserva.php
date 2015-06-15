@@ -3,6 +3,7 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use UNTDF\ReservasAulasBundle\Entity\Aula;
 use UNTDF\ReservasAulasBundle\Entity\Docente;
@@ -85,6 +86,11 @@ class Reserva
      */
     protected $evento;
 
+    public function __construct()
+    {
+        $this->recursos = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -143,20 +149,28 @@ class Reserva
         $this->recursos = $recursos;
     }
 
-    public function setFechahoradesde($fechahoradesde) {
-        $this->fechahoradesde = $fechahoradesde;
+    public function setFecha($fecha) {
+        $this->fecha = $fecha;
     }
 
-    public function getFechahoradesde() {
-        return $this->fechahoradesde;
+    public function getFecha() {
+        return $this->fecha;
+    }
+    
+    public function setHoradesde($horadesde) {
+        $this->horadesde = $horadesde;
     }
 
-    public function setFechahorahasta($fechahorahasta) {
-        $this->fechahorahasta = $fechahorahasta;
+    public function getHoradesde() {
+        return $this->horadesde;
     }
 
-    public function getFechahorahasta() {
-        return $this->fechahorahasta;
+    public function setHorahasta($horahasta) {
+        $this->horahasta = $horahasta;
+    }
+
+    public function getHorahasta() {
+        return $this->horahasta;
     }
 
     public function getEstado() {

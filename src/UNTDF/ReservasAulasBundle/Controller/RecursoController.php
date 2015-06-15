@@ -44,7 +44,7 @@ class RecursoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_recurso_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('recurso_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Recurso:new.html.twig', array(
@@ -63,7 +63,7 @@ class RecursoController extends Controller
     private function createCreateForm(Recurso $entity)
     {
         $form = $this->createForm(new RecursoType(), $entity, array(
-            'action' => $this->generateUrl('admin_recurso_create'),
+            'action' => $this->generateUrl('recurso_create'),
             'method' => 'POST',
         ));
 
@@ -143,7 +143,7 @@ class RecursoController extends Controller
     private function createEditForm(Recurso $entity)
     {
         $form = $this->createForm(new RecursoType(), $entity, array(
-            'action' => $this->generateUrl('admin_recurso_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('recurso_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,7 +172,7 @@ class RecursoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_recurso_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('recurso_edit', array('id' => $id)));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Recurso:edit.html.twig', array(
@@ -202,7 +202,7 @@ class RecursoController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_recurso'));
+        return $this->redirect($this->generateUrl('recurso'));
     }
 
     /**
@@ -215,7 +215,7 @@ class RecursoController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_recurso_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('recurso_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
