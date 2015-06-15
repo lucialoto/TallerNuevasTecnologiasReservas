@@ -23,6 +23,8 @@ class Recurso
      */
     protected $nombre;
 
+    
+    
     function setNombre($nombre){
         $this->nombre = $nombre;
     }
@@ -39,5 +41,4 @@ class Recurso
     {
         return $this->getNombre();
     }
-
 }

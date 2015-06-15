@@ -28,11 +28,6 @@ abstract class Evento
      */
     protected $nombre;
 
-        /* 
-    * @ORM\OneToMany(targetEntity="Reserva", mappedBy="evento")
-    */
-    protected $reservas;
-
     public function __construct()
     {
         $this->reservas = new ArrayCollection();
