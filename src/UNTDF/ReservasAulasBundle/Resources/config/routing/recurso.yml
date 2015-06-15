@@ -1,0 +1,30 @@
+recurso:
+    path:     /
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:index" }
+
+recurso_show:
+    path:     /{id}/show
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:show" }
+
+recurso_new:
+    path:     /new
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:new" }
+
+recurso_create:
+    path:     /create
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:create" }
+    methods:  POST
+
+recurso_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:edit" }
+
+recurso_update:
+    path:     /{id}/update
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:update" }
+    methods:  [POST, PUT]
+
+recurso_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:delete" }
+    methods:  [POST, DELETE]
