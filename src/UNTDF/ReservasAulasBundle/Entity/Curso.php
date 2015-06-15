@@ -14,7 +14,7 @@ class Curso extends Evento
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-   private $id;
+   protected $id;
     
     /**
      * @var integer

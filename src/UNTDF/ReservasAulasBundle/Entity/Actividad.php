@@ -3,7 +3,6 @@ namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UNTDF\ReservasAulasBundle\Entity\TipoActividad;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  *  @ORM\Table(name="actividad")
@@ -17,7 +16,7 @@ class Actividad extends Evento
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
     
     /**
      * @ORM\ManyToOne(targetEntity="TipoActividad", inversedBy="actividades")
@@ -29,9 +28,9 @@ class Actividad extends Evento
         return $this->id;
     }
 
-    public function setId($id) {
+    /*public function setId($id) {
         $this->id = $id;
-    }
+    }*/
     
     public function setTipoActividad($tipoactividad)
     {

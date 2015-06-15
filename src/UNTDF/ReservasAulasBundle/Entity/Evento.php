@@ -19,7 +19,7 @@ abstract class Evento
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
     
     /**
      * @var string
@@ -27,8 +27,8 @@ abstract class Evento
      * @ORM\Column(name="description", type="string", length=255)
      */
     protected $nombre;
-    
-    /* 
+
+        /* 
     * @ORM\OneToMany(targetEntity="Reserva", mappedBy="evento")
     */
     protected $reservas;
@@ -36,6 +36,10 @@ abstract class Evento
     public function __construct()
     {
         $this->reservas = new ArrayCollection();
+    }
+
+    public function getId() {
+        return $this->id;
     }
     
     public function getNombre() {
