@@ -144,10 +144,6 @@ class Reserva
         return $this->recursos;
     }
 
-    public function setRecursos($recursos) {
-        $this->recursos = $recursos;
-    }
-
     public function setFecha($fecha) {
         $this->fecha = $fecha;
     }
