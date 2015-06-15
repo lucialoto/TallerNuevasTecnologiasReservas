@@ -3,6 +3,8 @@ namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UNTDF\ReservasAulasBundle\Entity\TipoActividad;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  *  @ORM\Table(name="actividad")
  *  @ORM\Entity */
@@ -44,7 +46,9 @@ class Actividad extends Evento
         return $this->tipoactividad;
     }
 
-
+    public function getHorasMinimas(){
+        return $this->tipoactividad->getCantidadHoras();
+    }
      
 }
 

@@ -30,5 +30,29 @@ class Curso extends Evento
      */
     private $cantHoras;
     
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getAnio() {
+        return $this->anio;
+    }
+
+    public function getCantHoras() {
+        return $this->cantHoras;
+    }
+
+    public function setAnio($anio) {
+        $this->anio = $anio;
+    }
+
+    public function setCantHoras($cantHoras) {
+        $this->cantHoras = $cantHoras;
+    }
+
+    public function getHorasMinimas(){
+        return $this->cantHoras;
+    }
+
 }
 

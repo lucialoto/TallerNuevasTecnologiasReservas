@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use UNTDF\ReservasAulasBundle\Entity\Actividad;
 use UNTDF\ReservasAulasBundle\Form\ActividadType;
 
+
 /**
  * Actividad controller.
  *

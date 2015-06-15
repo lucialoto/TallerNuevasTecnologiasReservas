@@ -1,6 +1,7 @@
 <?php
 namespace UNTDF\ReservasAulasBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -45,6 +46,10 @@ abstract class Evento
         $this->nombre = $nombre;
     }
 
+    public function getHorasMinimas(){
+        
+    }
+    
     public function __toString()
     {
         return $this->getNombre();
