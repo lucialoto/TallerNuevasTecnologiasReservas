@@ -79,9 +79,9 @@ class Reserva
      * @ORM\Column(type="date")
      */
     protected $reservafecha;
-    
+
     /**
-     * @ORM\ManyToOne(targetEntity="Evento", inversedBy="reservas")
+     * @ORM\ManyToOne(targetEntity="Evento")
      * @ORM\JoinColumn(name="evento_id", referencedColumnName="id")
      */
     protected $evento;
@@ -100,7 +100,6 @@ class Reserva
     {
         return $this->id;
     }
-
 
     /**
      * Set evento
@@ -213,5 +212,5 @@ class Reserva
         }
         return $listarecursos;
     }
-        
+
 }
