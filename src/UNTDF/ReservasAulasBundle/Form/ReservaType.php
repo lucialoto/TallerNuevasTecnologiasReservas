@@ -15,7 +15,9 @@ class ReservaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fecha')
+            ->add('fecha', 'date', array(
+                'label'  => 'Fecha Reservada'
+            ))
             ->add('horadesde')
             ->add('horahasta')
             ->add('estado')
