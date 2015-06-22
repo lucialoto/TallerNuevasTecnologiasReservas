@@ -15,6 +15,28 @@ use UNTDF\ReservasAulasBundle\Form\ReservaType;
 class ReservaController extends Controller
 {
 
+    /*
+     * Lists all Reserva entities.
+     *
+     */
+    public function index2Action(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        
+        $entities = $em->createQuery(
+                'SELECT R FROM UNTDFReservasAulasBundle:Reserva R '
+                . 'ORDER BY R.fecha DESC, R.horadesde DESC, R.horahasta DESC'
+            )
+            ->getResult();
+
+
+        return $this->render('UNTDFReservasAulasBundle:Reserva:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
+    
     /**
      * Lists all Reserva entities.
      *
@@ -29,6 +51,7 @@ class ReservaController extends Controller
             'entities' => $entities,
         ));
     }
+    
     /**
      * Creates a new Reserva entity.
      *

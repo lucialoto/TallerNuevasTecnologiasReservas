@@ -27,6 +27,7 @@ class ReservaType extends AbstractType
             ->add('docente','entity',array('class' => 'UNTDFReservasAulasBundle:Docente'))
             ->add('recursos','entity', array(
                     'class' => 'UNTDFReservasAulasBundle:Recurso',
+                    'required' => false,
                     'multiple' => true
                   )
             )

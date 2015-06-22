@@ -2,6 +2,10 @@ reserva:
     path:     /
     defaults: { _controller: "UNTDFReservasAulasBundle:Reserva:index" }
 
+reserva_index2:
+    path:     /index2
+    defaults: { _controller: "UNTDFReservasAulasBundle:Reserva:index2" }
+
 reserva_show:
     path:     /{id}/show
     defaults: { _controller: "UNTDFReservasAulasBundle:Reserva:show" }

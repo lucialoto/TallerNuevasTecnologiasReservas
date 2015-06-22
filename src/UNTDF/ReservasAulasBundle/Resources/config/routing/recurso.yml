@@ -2,6 +2,11 @@ recurso:
     path:     /
     defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:index" }
 
+recurso_listado:
+    path:     /listado
+    defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:listado" }
+    methods: [GET]
+
 recurso_show:
     path:     /{id}/show
     defaults: { _controller: "UNTDFReservasAulasBundle:Recurso:show" }

@@ -20,6 +20,12 @@
 {% block javascripts -%}
     <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
     <script type="text/javascript">
-        $('select').select2();
+        $('select').select2(/*{
+            ajax: {
+                url: "https://127.0.0.1/reservas/web/app_dev.php/admin/recurso/listado",
+                method: "GET",
+                dataType: "json"
+            }
+        }*/);
     </script>
 {% endblock %}

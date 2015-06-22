@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use UNTDF\ReservasAulasBundle\Entity\Recurso;
 use UNTDF\ReservasAulasBundle\Form\RecursoType;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Recurso controller.
@@ -29,6 +31,34 @@ class RecursoController extends Controller
             'entities' => $entities,
         ));
     }
+
+    /**
+     * Lists all Recurso entities.
+     *
+     */
+    public function listadoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('UNTDFReservasAulasBundle:Recurso')->findAll();
+
+        $retorno = array();
+        foreach ($entities as $entity){
+            array_push($retorno, array('id' => $entity->getId(),'nombre' => $entity->getNombre()));
+        }
+        
+        $response = new Response();
+
+        $response->setContent(json_encode($retorno));
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        // prints the HTTP headers followed by the content
+        //$response->send();
+
+        return $response;
+    }
+
     /**
      * Creates a new Recurso entity.
      *
