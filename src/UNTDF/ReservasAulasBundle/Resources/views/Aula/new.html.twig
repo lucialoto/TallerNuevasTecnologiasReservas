@@ -3,28 +3,32 @@
 {% block body -%}
     <h1>Aula - Creación</h1>
 
-    
+
     {{ form_start(form) }}
-	    {{ form_errors(form) }}
-        <div class="form-group">
-            {{form_label(form.nombre)}}
+    {{ form_errors(form) }}
+    <div class="form-group">            
+        {{form_label(form.nombre)}}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
             {{form_errors(form.nombre)}}
-            {{form_widget(form.nombre)}}            
-        </div> 
-        <div>
-            {{form_label(form.edificio)}}
-            {{form_errors(form.edificio)}}
-            {{form_widget(form.edificio)}}            
         </div>
-	    
+        {{form_widget(form.nombre)}} 
+
+    </div> 
+    <div>
+        {{form_label(form.edificio)}}
+        {{form_errors(form.edificio)}}
+        {{form_widget(form.edificio)}}            
+    </div>
+
     {{ form_end(form) }}
 
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('aulas') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    
+            <a class="btn btn-primary" href="{{ path('aulas') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                Volver a la lista
+            </a>
+        
 {% endblock %}

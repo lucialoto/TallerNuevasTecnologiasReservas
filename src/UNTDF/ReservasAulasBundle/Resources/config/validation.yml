@@ -11,3 +11,68 @@ UNTDF\ReservasAulasBundle\Entity\Edificio:
                 minMessage: "El nombre del edificio tiene que tener como minimo {{ limit }} caracteres."
                 maxMessage: "El nombre del edificio tiene que tener como maximo {{ limit }} caracteres."
             
+UNTDF\ReservasAulasBundle\Entity\Aula:
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 1
+                max: 20
+                minMessage: "El nombre del aula tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del aula tiene que tener como maximo {{ limit }} caracteres."
+                
+UNTDF\ReservasAulasBundle\Entity\Docente:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: dni
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 30
+                minMessage: "El nombre del docente tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del docente tiene que tener como maximo {{ limit }} caracteres."
+        dni:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 1
+                max: 10
+                minMessage: "El dni tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El dni tiene que tener como maximo {{ limit }} caracteres."  
+                
+UNTDF\ReservasAulasBundle\Entity\Recurso:
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 30
+                minMessage: "El nombre del recurso tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del recurso tiene que tener como maximo {{ limit }} caracteres."
+                
+UNTDF\ReservasAulasBundle\Entity\FechaEspecial:
+    properties:
+        fecha:
+            - Date: ~
+        descripcion:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 30
+                minMessage: "La descripción de la fecha tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "La descripción de la fecha tiene que tener como maximo {{ limit }} caracteres."

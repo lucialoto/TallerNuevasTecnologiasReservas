@@ -11,22 +11,22 @@
             {{ form_errors(edit_form.nombre) }}
             {{ form_widget(edit_form.nombre) }}
         </div>
-        <p>----------</p>
+        
         <div>
             {{ form_label(edit_form.dni) }}
             {{ form_errors(edit_form.dni) }}
             {{ form_widget(edit_form.dni) }}
         </div>
-        <p>----------</p>
+        
         
         
         {{ form_end(edit_form) }}
 
-    <li>
-        <a href="{{ path('docente') }}">
+    
+        <a class="btn btn-primary" href="{{ path('docente') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
             Volver a la lista
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    
+    {{ form(delete_form) }}
+
 {% endblock %}

@@ -1,16 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Recurso edit</h1>
+    <h1>Recurso - Edición</h1>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('recurso') }}">
-            Back to the list
+        
+        <a class="btn btn-primary" href="{{ path('recurso') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            Volver a la lista
         </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        
+    {{ form(delete_form) }}
+
 {% endblock %}

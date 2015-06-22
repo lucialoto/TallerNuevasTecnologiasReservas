@@ -44,7 +44,7 @@ class RecursoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('recurso_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('recurso', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Recurso:new.html.twig', array(
@@ -67,7 +67,7 @@ class RecursoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear'));
 
         return $form;
     }
@@ -147,7 +147,7 @@ class RecursoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -217,7 +217,7 @@ class RecursoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('recurso_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }

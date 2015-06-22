@@ -1,15 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>FechaEspecial creation</h1>
+    <h1>Fechas Especiales - Creación</h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('fechaespecial') }}">
-            Back to the list
+        
+        <a class="btn btn-primary" href="{{ path('fechaespecial') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            Volver a la lista
         </a>
-    </li>
-</ul>
+    
 {% endblock %}
