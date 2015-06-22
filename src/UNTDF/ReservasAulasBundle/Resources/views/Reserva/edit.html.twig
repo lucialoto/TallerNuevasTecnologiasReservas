@@ -1,4 +1,7 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets -%}
+    <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/css/select2.min.css')}}" />
+{% endblock %}
 
 {% block body -%}
     <h1>Reserva edit</h1>
@@ -13,4 +16,10 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+{% endblock %}
+{% block javascripts -%}
+    <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
+    <script type="text/javascript">
+        $('select').select2();
+    </script>
 {% endblock %}
