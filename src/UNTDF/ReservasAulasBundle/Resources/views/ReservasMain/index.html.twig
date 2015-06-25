@@ -1,12 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Reserva list</h1>
+    <h1>Listado de Reservas</h1>
 
     <form id="formulariobase">
 
         <div class="input-daterange input-group" id="datepicker" class="datepicker">
-
             <label class="col-sm-1 col-lg-1 control-label" for="fechadesde">Desde</label>
             <div class="col-sm-2 col-lg-2">
                 <input type="text" class="input-sm form-control" id="fechadesde" name="start" size="10"/>
@@ -15,8 +14,6 @@
             <div class="col-sm-2 col-lg-2">
                 <input type="text" class="input-sm form-control" id="fechahasta" name="end" size="10"/>
             </div>
-
-
         </div>
 
         <select name="evento">
@@ -38,6 +35,8 @@
             {% endfor %}
         </select>
 
+        <button id="enviar">enviar!!!</button>
+
         {# <p>Date: <input type="text" id="datepicker" size="30"></p> #}
         {#
         <div class="input-group date alone">
@@ -46,6 +45,10 @@
         #}
 
     </form>
+
+    <button id="btnFiltro1">Aplicar Filtro 1</button>
+    <button id="btnFiltro2">Aplicar Filtro 2</button>
+
 
     <table class="records_list">
         <thead>
@@ -86,14 +89,10 @@
             </tr> #}
         </tbody>
     </table>
+    <ol>
+        salida?
+    </ol>
 
-    <ul>
-        <li>
-            <a href="{{ path('reserva_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
 {% endblock %}
 
 {% block stylesheets %}
@@ -104,15 +103,34 @@
     <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
     <script>
-        $('.input-daterange.input-group').datepicker({
-            startDate: "01/01/2014",
-            endDate: "31/12/2016",
-            todayBtn: "linked",
-            clearBtn: true,
-            language: "es",
-            autoclose: true,
-            orientation: "top auto",
-            todayHighlight: true
+        $(document).ready(function () {
+            $('.input-daterange.input-group').datepicker({
+                startDate: "01/01/2014",
+                endDate: "31/12/2016",
+                todayBtn: "linked",
+                clearBtn: true,
+                language: "es",
+                autoclose: true,
+                orientation: "top auto",
+                todayHighlight: true
+            });
+
+            $("#btnFiltro1").click(function () {
+                $( ".itemlistado" ).remove();
+                $.getJSON("https://127.0.0.1/reservas/web/app_dev.php/listadoReservas", 
+                    function(result){
+                        $.each(result, function(i, field){
+                            
+                            $("ol").append("<div class='itemlistado'><li> " + field.id + " / " + field.fecha.date + " / " + field.evento + " / " + field.aula + " / " + field.recursos + " / " + field.docente+ "</li></div>");
+
+    });
+                    });
+                });
+
+            $("#btnFiltro2").click(function () {
+                $("ol").append("<div class='itemlistado'><li>List item</li></div>");
+            });
+
         });
     </script>
 {% endblock %}

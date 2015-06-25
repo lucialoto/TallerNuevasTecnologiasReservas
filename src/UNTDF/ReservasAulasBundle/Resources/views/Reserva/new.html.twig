@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 {% block stylesheets -%}
     <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/css/select2.min.css')}}" />
+    <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css')}}" />
 {% endblock %}
 
 {% block body -%}
@@ -18,7 +19,18 @@
 {% endblock %}
 {% block javascripts -%}
     <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
     <script type="text/javascript">
         $('select').select2();
+        $('.fechareservada_input_text').datepicker({
+            startDate: "{{ "now"|date('d-m-Y')}}",
+            endDate: "{{ "now"|date_modify('+1 Year')|date('d-m-Y')}}",
+            todayBtn: "linked",
+            clearBtn: true,
+            language: "es",
+            orientation: "top auto",
+            autoclose: true
+        });
     </script>
 {% endblock %}

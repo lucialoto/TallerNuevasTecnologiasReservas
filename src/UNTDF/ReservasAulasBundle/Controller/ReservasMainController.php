@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class ReservasMainController extends Controller {
 
-    public function indexAction(){
+    public function indexAction(Request $request){
         
         $em = $this->getDoctrine()->getManager();
 

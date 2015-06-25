@@ -4,6 +4,7 @@ namespace UNTDF\ReservasAulasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 use UNTDF\ReservasAulasBundle\Entity\Reserva;
 use UNTDF\ReservasAulasBundle\Form\ReservaType;
@@ -15,6 +16,56 @@ use UNTDF\ReservasAulasBundle\Form\ReservaType;
 class ReservaController extends Controller
 {
 
+     /**
+     * Listado filtrado de elementos.
+     *
+     */
+    public function listadoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+/*        $qb = $em->createQueryBuilder();
+        $qb->select('R');
+        $qb->from('UNTDFReservasAulasBundle:Reserva', 'R');
+        //$qb->where('u.id = :identifier');
+        $qb->add('orderBy', 'R.fecha DESC R.horadesde DESC R.horahasta DESC');
+        
+        $query = $qb->getQuery();
+        $entities = $query->getResult();
+ */       
+        $entities = $em->createQuery(
+                'SELECT R FROM UNTDFReservasAulasBundle:Reserva R '
+                . 'ORDER BY R.fecha DESC, R.horadesde DESC, R.horahasta DESC'
+            )
+            ->getResult();
+        
+        $retorno = array();
+        foreach ($entities as $entity){
+            array_push($retorno, 
+                    array(
+                        //'query' => $qb->getDql(),
+                        'id' => $entity->getId(), 
+                        'fecha' => $entity->getFecha(),
+                        'evento' => $entity->getEvento()->getNombre(),
+                        'aula' => $entity->getAula()->getNombre(),
+                        'docente' => $entity->getDocente()->getNombre(),
+                        'recursos' => $entity->obtenerListaRecursos()
+                    )
+                    );
+        }
+        
+        $response = new Response();
+
+        $response->setContent(json_encode($retorno));
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        // prints the HTTP headers followed by the content
+        //$response->send();
+
+        return $response;
+    }
+    
     /*
      * Lists all Reserva entities.
      *
