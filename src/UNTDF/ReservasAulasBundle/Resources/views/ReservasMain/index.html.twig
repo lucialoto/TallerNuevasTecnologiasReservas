@@ -8,11 +8,11 @@
         <div class="input-daterange input-group" id="datepicker" class="datepicker">
             <label class="col-sm-1 col-lg-1 control-label" for="fechadesde">Desde</label>
             <div class="col-sm-2 col-lg-2">
-                <input type="text" class="input-sm form-control" id="fechadesde" name="start" size="10"/>
+                <input type="text" class="input-sm form-control" id="fechadesde" name="start" size="10" value="{{ "now"|date('d-m-Y')}}"/>
             </div>
             <label class="col-sm-1 col-lg-1 control-label" for="fechahasta">hasta</label>
             <div class="col-sm-2 col-lg-2">
-                <input type="text" class="input-sm form-control" id="fechahasta" name="end" size="10"/>
+                <input type="text" class="input-sm form-control" id="fechahasta" name="end" size="10" value="{{ "now"|date_modify('+7 days')|date('d-m-Y')}}"/>
             </div>
         </div>
 
@@ -35,8 +35,6 @@
             {% endfor %}
         </select>
 
-        <button id="enviar">enviar!!!</button>
-
         {# <p>Date: <input type="text" id="datepicker" size="30"></p> #}
         {#
         <div class="input-group date alone">
@@ -46,8 +44,7 @@
 
     </form>
 
-    <button id="btnFiltro1">Aplicar Filtro 1</button>
-    <button id="btnFiltro2">Aplicar Filtro 2</button>
+    <button id="btnFiltro">Aplicar Filtro 1</button>
 
 
     <table class="records_list">
@@ -115,9 +112,10 @@
                 todayHighlight: true
             });
 
-            $("#btnFiltro1").click(function () {
+            $("#btnFiltro").click(function () {
                 $( ".itemlistado" ).remove();
-                $.getJSON("https://127.0.0.1/reservas/web/app_dev.php/listadoReservas", 
+                //$.getJSON("https://127.0.0.1/reservas/web/app_dev.php/listadoReservas", 
+                $.getJSON("listadoReservas", 
                     function(result){
                         $.each(result, function(i, field){
                             
@@ -127,9 +125,6 @@
                     });
                 });
 
-            $("#btnFiltro2").click(function () {
-                $("ol").append("<div class='itemlistado'><li>List item</li></div>");
-            });
 
         });
     </script>
