@@ -1,1 +1,118 @@
 {% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Reserva list</h1>
+
+    <form id="formulariobase">
+
+        <div class="input-daterange input-group" id="datepicker" class="datepicker">
+
+            <label class="col-sm-1 col-lg-1 control-label" for="fechadesde">Desde</label>
+            <div class="col-sm-2 col-lg-2">
+                <input type="text" class="input-sm form-control" id="fechadesde" name="start" size="10"/>
+            </div>
+            <label class="col-sm-1 col-lg-1 control-label" for="fechahasta">hasta</label>
+            <div class="col-sm-2 col-lg-2">
+                <input type="text" class="input-sm form-control" id="fechahasta" name="end" size="10"/>
+            </div>
+
+
+        </div>
+
+        <select name="evento">
+            <option value="0">TODOS LOS EVENTOS</option>
+            {% for evento in eventos %}
+                <option value="{{ evento.id }}">{{ evento.getNombre() }}</option>
+            {% endfor %}
+        </select>
+        <select name="aula">
+            <option value="0">TODAS LAS AULAS</option>
+            {% for aula in aulas %}
+                <option value="{{ aula.id }}">{{ aula.getNombre() }}</option>
+            {% endfor %}
+        </select>
+        <select name="docente">
+            <option value="0">TODOS LOS DOCENTES</option>
+            {% for docente in docentes %}
+                <option value="{{ docente.id }}">{{ docente.getNombre() }}</option>
+            {% endfor %}
+        </select>
+
+        {# <p>Date: <input type="text" id="datepicker" size="30"></p> #}
+        {#
+        <div class="input-group date alone">
+          <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+        </div> 
+        #}
+
+    </form>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Horadesde</th>
+                <th>Horahasta</th>
+                <th>Estado</th>
+                <th>Observacion</th>
+                <th>Recursos</th>
+                <th>Reservafecha</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            {# <tr>
+                <td><a href="{{ path('reserva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.horadesde %}{{ entity.horadesde|date('H:i:s') }}{% endif %}</td>
+                <td>{% if entity.horahasta %}{{ entity.horahasta|date('H:i:s') }}{% endif %}</td>
+                <td>{{ entity.estado }}</td>
+                <td>{{ entity.observacion }}</td>
+                <td>{{ entity.obtenerListaRecursos() }}</td>
+                <td>{% if entity.reservafecha %}{{ entity.reservafecha|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('reserva_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('reserva_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr> #}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reserva_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css')}}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    <script>
+        $('.input-daterange.input-group').datepicker({
+            startDate: "01/01/2014",
+            endDate: "31/12/2016",
+            todayBtn: "linked",
+            clearBtn: true,
+            language: "es",
+            autoclose: true,
+            orientation: "top auto",
+            todayHighlight: true
+        });
+    </script>
+{% endblock %}

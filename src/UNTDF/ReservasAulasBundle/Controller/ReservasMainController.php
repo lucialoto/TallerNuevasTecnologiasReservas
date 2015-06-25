@@ -21,8 +21,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ReservasMainController extends Controller {
 
     public function indexAction(){
+        
         $em = $this->getDoctrine()->getManager();
 
-        return $this->render('UNTDFReservasAulasBundle:ReservasMain:index.html.twig');
+        $eventos = $em->getRepository('UNTDFReservasAulasBundle:Evento')->findAll();
+        $aulas = $em->getRepository('UNTDFReservasAulasBundle:Aula')->findAll();
+        $docentes = $em->getRepository('UNTDFReservasAulasBundle:Docente')->findAll();        
+
+        return $this->render('UNTDFReservasAulasBundle:ReservasMain:index.html.twig', array(
+            'eventos'  => $eventos,
+            'aulas'    => $aulas,
+            'docentes' => $docentes,
+        ));
+
+
     }
 }
