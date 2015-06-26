@@ -18,7 +18,8 @@ class ReservaController extends Controller
 
      /**
      * Listado filtrado de elementos.
-     *
+     * para utilizar con ajax.
+     * 
      */
     public function listadoAction(Request $request)
     {
