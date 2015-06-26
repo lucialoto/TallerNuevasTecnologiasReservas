@@ -8,11 +8,11 @@
         <div class="input-daterange input-group" id="datepicker" class="datepicker">
             <label class="col-sm-1 col-lg-1 control-label" for="fechadesde">Desde</label>
             <div class="col-sm-2 col-lg-2">
-                <input type="text" class="input-sm form-control" id="fechadesde" name="start" size="10" value="{{ "now"|date('d-m-Y')}}"/>
+                <input type="text" class="input-sm form-control" id="fechadesde" name="fechadesde" size="10" value="{{ "now"|date('Y-m-d')}}"/>
             </div>
             <label class="col-sm-1 col-lg-1 control-label" for="fechahasta">hasta</label>
             <div class="col-sm-2 col-lg-2">
-                <input type="text" class="input-sm form-control" id="fechahasta" name="end" size="10" value="{{ "now"|date_modify('+7 days')|date('d-m-Y')}}"/>
+                <input type="text" class="input-sm form-control" id="fechahasta" name="fechahasta" size="10" value="{{ "now"|date_modify('+7 days')|date('Y-m-d')}}"/>
             </div>
         </div>
 
@@ -44,51 +44,27 @@
 
     </form>
 
-    <button id="btnFiltro">Aplicar Filtro 1</button>
+    <button id="btnFiltro">Aplicar Filtro</button>
 
-
-    <table class="records_list">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Fecha</th>
-                <th>Horadesde</th>
-                <th>Horahasta</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Evento</th>
+                <th>Aula</th>
                 <th>Estado</th>
                 <th>Observacion</th>
                 <th>Recursos</th>
-                <th>Reservafecha</th>
-                <th>Actions</th>
+                <th>Reservado</th>
+                <th>Docente</th>
             </tr>
         </thead>
-        <tbody>
-
-
-            {# <tr>
-                <td><a href="{{ path('reserva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if entity.horadesde %}{{ entity.horadesde|date('H:i:s') }}{% endif %}</td>
-                <td>{% if entity.horahasta %}{{ entity.horahasta|date('H:i:s') }}{% endif %}</td>
-                <td>{{ entity.estado }}</td>
-                <td>{{ entity.observacion }}</td>
-                <td>{{ entity.obtenerListaRecursos() }}</td>
-                <td>{% if entity.reservafecha %}{{ entity.reservafecha|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('reserva_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('reserva_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr> #}
+        <tbody class="listado_tabla">
         </tbody>
     </table>
-    <ol>
-        salida?
-    </ol>
 
 {% endblock %}
 
@@ -102,8 +78,9 @@
     <script>
         $(document).ready(function () {
             $('.input-daterange.input-group').datepicker({
-                startDate: "01/01/2014",
-                endDate: "31/12/2016",
+                format: "yyyy-mm-dd",
+                startDate: "2014/01/01",
+                endDate: "2016/12/31",
                 todayBtn: "linked",
                 clearBtn: true,
                 language: "es",
@@ -111,21 +88,44 @@
                 orientation: "top auto",
                 todayHighlight: true
             });
-
+                
             $("#btnFiltro").click(function () {
-                $( ".itemlistado" ).remove();
+                $(".listado_tabla_item").remove();
                 //$.getJSON("https://127.0.0.1/reservas/web/app_dev.php/listadoReservas", 
-                $.getJSON("listadoReservas", 
+                var pFechadesde = $("#formulariobase :input[name='fechadesde']").val(); 
+                var pFechahasta = $("#formulariobase :input[name='fechahasta']").val();
+                var pEvento = $("#formulariobase :input[name='evento']").val();
+                var pAula = $("#formulariobase :input[name='aula']").val();
+                var pDocente = $("#formulariobase :input[name='docente']").val();
+                $.getJSON("listadoReservas",
+                    { fechadesde: pFechadesde, 
+                        fechahasta: pFechahasta,
+                        evento: pEvento,
+                        aula: pAula,
+                        docente: pDocente  
+                    },
                     function(result){
-                        $.each(result, function(i, field){
-                            
-                            $("ol").append("<div class='itemlistado'><li> " + field.id + " / " + field.fecha.date + " / " + field.evento + " / " + field.aula + " / " + field.recursos + " / " + field.docente+ "</li></div>");
-
-    });
+                        $.each(result, function(i, field){                            
+                            var tabla_item = "";
+                            tabla_item = "<tr class='listado_tabla_item'>";
+                            tabla_item = tabla_item + "<td>" + field.id + "</td>";
+                            tabla_item = tabla_item + "<td>" + field.fecha + "</td>";
+                            tabla_item = tabla_item + "<td>" + field.horadesde + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.horahasta + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.evento + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.aula + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.estado + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.observacion + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.recursos + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.reservado + "</th>";
+                            tabla_item = tabla_item + "<td>" + field.docente + "</th>";
+                            tabla_item = tabla_item + "</tr>";
+                            $(".listado_tabla").append(tabla_item);
+                        });
                     });
                 });
-
-
-        });
+            });
     </script>
+
 {% endblock %}
+

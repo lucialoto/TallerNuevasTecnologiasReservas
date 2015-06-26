@@ -22,36 +22,50 @@ class ReservaController extends Controller
      */
     public function listadoAction(Request $request)
     {
+        $fechadesde = $request->query->get('fechadesde'); 
+        $fechahasta = $request->query->get('fechahasta');
+        $evento = $request->query->get('evento');
+        $aula = $request->query->get('aula');
+        $docente = $request->query->get('docente'); 
+                
+        $consultaDQLselect = 'SELECT R FROM UNTDFReservasAulasBundle:Reserva R ';
+        $consultaDQLwhere = "WHERE R.fecha >= '" . $fechadesde . "' AND R.fecha <= '" . $fechahasta ."'";
+        if ($evento != 0) {
+            $consultaDQLwhere = $consultaDQLwhere . " AND R.evento = " . $evento;
+        }        
+        if ($aula != 0) {
+            $consultaDQLwhere = $consultaDQLwhere . " AND R.aula = " . $aula;
+        }        
+        if ($docente != 0) {
+            $consultaDQLwhere = $consultaDQLwhere . " AND R.docente = " . $docente;
+        }        
+        $consultaDQLorder = ' ORDER BY R.fecha DESC, R.horadesde DESC, R.horahasta DESC';
+        $consultaDQL = $consultaDQLselect . $consultaDQLwhere . $consultaDQLorder;
+        
+        error_log($consultaDQL);
+        
         $em = $this->getDoctrine()->getManager();
-
-/*        $qb = $em->createQueryBuilder();
-        $qb->select('R');
-        $qb->from('UNTDFReservasAulasBundle:Reserva', 'R');
-        //$qb->where('u.id = :identifier');
-        $qb->add('orderBy', 'R.fecha DESC R.horadesde DESC R.horahasta DESC');
+        $entities = $em->createQuery($consultaDQL)->getResult();
         
-        $query = $qb->getQuery();
-        $entities = $query->getResult();
- */       
-        $entities = $em->createQuery(
-                'SELECT R FROM UNTDFReservasAulasBundle:Reserva R '
-                . 'ORDER BY R.fecha DESC, R.horadesde DESC, R.horahasta DESC'
-            )
-            ->getResult();
-        
-        $retorno = array();
+        $retorno = array();        
         foreach ($entities as $entity){
             array_push($retorno, 
                     array(
                         //'query' => $qb->getDql(),
                         'id' => $entity->getId(), 
-                        'fecha' => $entity->getFecha(),
+                        'fecha' => date_format($entity->getFecha(), 'Y-m-d'),
+                        'horadesde' => date_format($entity->getHoradesde(), 'H:i:s'), 
+                        'horahasta' => date_format($entity->getHorahasta(), 'H:i:s'),
                         'evento' => $entity->getEvento()->getNombre(),
                         'aula' => $entity->getAula()->getNombre(),
-                        'docente' => $entity->getDocente()->getNombre(),
-                        'recursos' => $entity->obtenerListaRecursos()
-                    )
+                        'estado' => $entity->getEstado(),
+                        'observacion' => $entity->getObservacion(),
+                        'recursos' => $entity->obtenerListaRecursos(),
+                        'reservado' => date_format($entity->getReservafecha(), 'Y-m-d'),
+                        'docente' => $entity->getDocente()->getNombre()
+                        )
                     );
+            
         }
         
         $response = new Response();
