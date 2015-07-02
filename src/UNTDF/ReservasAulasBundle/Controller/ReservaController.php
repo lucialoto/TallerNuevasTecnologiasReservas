@@ -43,7 +43,7 @@ class ReservaController extends Controller
         $consultaDQLorder = ' ORDER BY R.fecha DESC, R.horadesde DESC, R.horahasta DESC';
         $consultaDQL = $consultaDQLselect . $consultaDQLwhere . $consultaDQLorder;
         
-        error_log($consultaDQL);
+        // error_log($consultaDQL);
         
         $em = $this->getDoctrine()->getManager();
         $entities = $em->createQuery($consultaDQL)->getResult();
@@ -125,11 +125,14 @@ class ReservaController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Reserva();
+        
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setReservafecha(new \DateTime('now'));
+            $entity->setReservausuario($this->getUser());
             $em->persist($entity);
             $em->flush();
 
