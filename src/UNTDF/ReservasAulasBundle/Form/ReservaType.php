@@ -42,7 +42,7 @@ class ReservaType extends AbstractType {
                     'multiple' => true
                         )
                 )
-                ->add('reservafecha', 'datetime', array(
+/*                ->add('reservafecha', 'datetime', array(
                     'widget' => 'single_text',
                     'format' => 'Y-M-d',
                     'data' =>  new \DateTime('now'),
@@ -55,7 +55,7 @@ class ReservaType extends AbstractType {
                         //,
                         //'data' => $this->getDoctrine()->getManager()->getReference('UNTDFReservasAulasBundle:User', $this->getUser()->getId())
                         )
-                )
+                )*/
                 ->add('evento', 'entity', array('class' => 'UNTDFReservasAulasBundle:Evento'))
         ;
     }
