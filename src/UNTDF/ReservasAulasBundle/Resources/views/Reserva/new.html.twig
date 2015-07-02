@@ -5,17 +5,37 @@
 {% endblock %}
 
 {% block body -%}
-    <h1>Reserva creation</h1>
+    <h1>Reserva - Agregar</h1>
 
-    {{ form(form) }}
+    {# {{ form(form) }} #}
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('reserva') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+            {{ form_start(form) }}
+
+            <div class="contain"> 
+                {{ form_label(form.fecha) }} {{ form_errors(form.fecha) }} {{ form_widget(form.fecha) }}
+                {{ form_label(form.horadesde) }} {{ form_errors(form.horadesde) }} {{ form_widget(form.horadesde) }} 
+                {{ form_label(form.horahasta) }} {{ form_errors(form.horahasta) }} {{ form_widget(form.horahasta) }} 
+                {{ form_label(form.evento) }} {{ form_errors(form.evento) }} {{ form_widget(form.evento) }} 
+                {{ form_label(form.aula) }} {{ form_errors(form.aula) }} {{ form_widget(form.aula) }} 
+                {{ form_label(form.docente) }} {{ form_errors(form.docente) }} {{ form_widget(form.docente) }} 
+                {{ form_label(form.recursos) }} {{ form_errors(form.recursos) }} {{ form_widget(form.recursos) }} 
+                {{ form_label(form.observacion) }} {{ form_errors(form.observacion) }} {{ form_widget(form.observacion) }} 
+                {{ form_label(form.estado) }} {{ form_errors(form.estado) }} {{ form_widget(form.estado) }} 
+                {{ form_label(form.reservafecha) }} {{ form_errors(form.reservafecha) }} {{ form_widget(form.reservafecha) }} 
+                {{ form_label(form.reservausuario) }} {{ form_errors(form.reservausuario) }} {{ form_widget(form.reservausuario) }} 
+            </div>
+
+            {{ form_end(form) }}    
+        </div>
+    </div>
+
+    <ul class="record_actions">
+        <a class="btn btn-primary" href="{{ path('reserva') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            Volver a la lista
+        </a> 
+    </ul>
 {% endblock %}
 {% block javascripts -%}
     <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
@@ -24,9 +44,10 @@
     <script type="text/javascript">
         $('select').select2();
         $('.fechareservada_input_text').datepicker({
-            startDate: "{{ "now"|date('d-m-Y')}}",
-            endDate: "{{ "now"|date_modify('+1 Year')|date('d-m-Y')}}",
+            startDate: "{{ "now"|date('Y-m-d')}}",
+            endDate: "{{ "now"|date_modify('+1 Year')|date('Y-m-d')}}",
             todayBtn: "linked",
+            format: "yyyy-m-d",
             clearBtn: true,
             language: "es",
             orientation: "top auto",

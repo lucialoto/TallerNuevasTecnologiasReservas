@@ -15,7 +15,13 @@ class FechaEspecialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fecha')
+            ->add('fecha', 'datetime', array(
+                    'label' => 'Fecha',
+                    'widget' => 'single_text',
+                    'format' => 'Y-M-d',
+                    'attr' => array(
+                        'class' => 'fechareservada_input_text')
+                        ))
             ->add('descripcion')
         ;
     }

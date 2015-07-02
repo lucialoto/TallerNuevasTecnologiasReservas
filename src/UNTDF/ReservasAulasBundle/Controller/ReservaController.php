@@ -151,6 +151,9 @@ class ReservaController extends Controller
      */
     private function createCreateForm(Reserva $entity)
     {
+        /* para cargar valores por defecto en el formulario */
+        // $entity->setReservafecha(new DateTime("NOW"));
+        // $entity->setReservausuario($this->getUser()->getUsername());
         $form = $this->createForm(new ReservaType(), $entity, array(
             'action' => $this->generateUrl('reserva_create'),
             'method' => 'POST',

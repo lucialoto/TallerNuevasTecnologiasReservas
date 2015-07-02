@@ -88,7 +88,7 @@ class Reserva
 
     public function __construct()
     {
-        $this->recursos = new ArrayCollection();
+        $this->recursos = new ArrayCollection();        
     }
     
     /**

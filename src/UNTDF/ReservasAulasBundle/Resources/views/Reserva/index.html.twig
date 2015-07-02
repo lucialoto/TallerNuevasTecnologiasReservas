@@ -1,53 +1,47 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Reserva list</h1>
-
-    <table class="records_list">
+    <h1>Reservas</h1>
+    <p><a class="btn btn-primary" href="{{ path('reserva_new') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
+    <table class="table table-bordered records_list">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Fecha</th>
-                <th>Horadesde</th>
-                <th>Horahasta</th>
+                <th>Desde</th>
+                <th>Hasta</th>
+                <th>Evento</th>
+                <th>Aula</th>
                 <th>Estado</th>
                 <th>Observacion</th>
                 <th>Recursos</th>
-                <th>Reservafecha</th>
-                <th>Actions</th>
+                <th>Reservado</th>
+                <th>Docente</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('reserva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if entity.horadesde %}{{ entity.horadesde|date('H:i:s') }}{% endif %}</td>
-                <td>{% if entity.horahasta %}{{ entity.horahasta|date('H:i:s') }}{% endif %}</td>
-                <td>{{ entity.estado }}</td>
-                <td>{{ entity.observacion }}</td>
-                <td>{{ entity.obtenerListaRecursos() }}</td>
-                <td>{% if entity.reservafecha %}{{ entity.reservafecha|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('reserva_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('reserva_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('reserva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                    <td>{% if entity.horadesde %}{{ entity.horadesde|date('H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.horahasta %}{{ entity.horahasta|date('H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.evento }}</td>
+                    <td>{{ entity.aula }}</td>
+                    <td>{{ entity.estado }}</td>
+                    <td>{{ entity.observacion }}</td>
+                    <td>{{ entity.obtenerListaRecursos() }}</td>
+                    <td>{% if entity.reservafecha %}{{ entity.reservafecha|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ entity.docente }}</td>
+                    <td>
+                        <ul>
+                            <a href="{{ path('reserva_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span>editar</a>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('reserva_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}

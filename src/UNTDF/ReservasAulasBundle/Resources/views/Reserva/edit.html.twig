@@ -5,15 +5,39 @@
 {% endblock %}
 
 {% block body -%}
-    <h1>Reserva edit</h1>
+    <h1>Reserva - Modificar/Editar</h1>
 
-    {{ form(edit_form) }}
+    {# {{ form(form) }} #}
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+
+            {{ form_start(edit_form) }}
+
+            <div class="contain"> 
+                {{ form_label(edit_form.fecha) }} {{ form_errors(edit_form.fecha) }} {{ form_widget(edit_form.fecha) }}
+                {{ form_label(edit_form.horadesde) }} {{ form_errors(edit_form.horadesde) }} {{ form_widget(edit_form.horadesde) }} 
+                {{ form_label(edit_form.horahasta) }} {{ form_errors(edit_form.horahasta) }} {{ form_widget(edit_form.horahasta) }} 
+                {{ form_label(edit_form.evento) }} {{ form_errors(edit_form.evento) }} {{ form_widget(edit_form.evento) }} 
+                {{ form_label(edit_form.aula) }} {{ form_errors(edit_form.aula) }} {{ form_widget(edit_form.aula) }} 
+                {{ form_label(edit_form.docente) }} {{ form_errors(edit_form.docente) }} {{ form_widget(edit_form.docente) }} 
+                {{ form_label(edit_form.recursos) }} {{ form_errors(edit_form.recursos) }} {{ form_widget(edit_form.recursos) }} 
+                {{ form_label(edit_form.observacion) }} {{ form_errors(edit_form.observacion) }} {{ form_widget(edit_form.observacion) }} 
+                {{ form_label(edit_form.estado) }} {{ form_errors(edit_form.estado) }} {{ form_widget(edit_form.estado) }} 
+                {{ form_label(edit_form.reservafecha) }} {{ form_errors(edit_form.reservafecha) }} {{ form_widget(edit_form.reservafecha) }} 
+                {{ form_label(edit_form.reservausuario) }} {{ form_errors(edit_form.reservausuario) }} {{ form_widget(edit_form.reservausuario) }} 
+            </div>
+
+            {{ form_end(edit_form) }}    
+        </div>
+    </div>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('reserva') }}">
-            Back to the list
-        </a>
+        <a class="btn btn-primary" href="{{ path('reserva') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            Volver a la lista
+        </a>            
+            
+            
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
@@ -31,9 +55,10 @@
             }
         }*/);
         $('.fechareservada_input_text').datepicker({
-            startDate: "{{ "now"|date('d-m-Y')}}",
-            endDate: "{{ "now"|date_modify('+1 Year')|date('d-m-Y')}}",
+            startDate: "{{ "now"|date('Y-m-d')}}",
+            endDate: "{{ "now"|date_modify('+1 Year')|date('Y-m-d')}}",
             todayBtn: "linked",
+            format: "yyyy-m-d",
             clearBtn: true,
             language: "es",
             orientation: "top auto",
