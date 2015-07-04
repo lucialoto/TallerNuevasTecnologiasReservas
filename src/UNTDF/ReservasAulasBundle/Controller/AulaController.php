@@ -43,8 +43,8 @@ class AulaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('aulas_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('aulas'));
+            //return $this->redirect($this->generateUrl('aulas_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Aula:new.html.twig', array(

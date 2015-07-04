@@ -8,12 +8,9 @@
     {{ form_errors(form) }}
     <div class="form-group">            
         {{form_label(form.nombre)}}
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        
             {{form_errors(form.nombre)}}
-        </div>
+        
         {{form_widget(form.nombre)}} 
 
     </div> 

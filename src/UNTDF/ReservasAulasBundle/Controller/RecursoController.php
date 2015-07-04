@@ -73,8 +73,8 @@ class RecursoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('recurso', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('recurso'));
+            //return $this->redirect($this->generateUrl('recurso', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Recurso:new.html.twig', array(

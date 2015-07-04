@@ -43,8 +43,9 @@ class DocenteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('docente', array('id' => $entity->getId())));
+            
+            return $this->redirect($this->generateUrl('docente'));
+            //return $this->redirect($this->generateUrl('docente', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Docente:new.html.twig', array(

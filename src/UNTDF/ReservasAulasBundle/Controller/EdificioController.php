@@ -43,8 +43,8 @@ class EdificioController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('edificio_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('edificio'));
+            //return $this->redirect($this->generateUrl('edificio_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Edificio:new.html.twig', array(
