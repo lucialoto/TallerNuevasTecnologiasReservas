@@ -136,7 +136,13 @@ class ReservaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('reserva_show', array('id' => $entity->getId())));
+            $this->addFlash(
+                'notice',
+                'Reserva creada !'
+            );
+            
+            return $this->redirect($this->generateUrl('reserva'));
+            //return $this->redirect($this->generateUrl('reserva_show', array('id' => $entity->getId())));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Reserva:new.html.twig', array(
@@ -162,7 +168,7 @@ class ReservaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Agregar'));
 
         return $form;
     }
@@ -242,7 +248,7 @@ class ReservaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -267,7 +273,13 @@ class ReservaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('reserva_edit', array('id' => $id)));
+            $this->addFlash(
+                'notice',
+                'Reserva Modificada !'
+            );
+
+            //return $this->redirect($this->generateUrl('reserva_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('reserva'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Reserva:edit.html.twig', array(
@@ -312,7 +324,7 @@ class ReservaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('reserva_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }
