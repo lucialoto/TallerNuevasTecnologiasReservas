@@ -2,6 +2,13 @@
 
 {% block body -%}
     <h1>Tipos de Actividad</h1>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success flash-notice">
+            <span aria-hidden="true">{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
+
     <p><a class="btn btn-primary" href="{{ path('tipoactividad_new') }}">
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR
         </a></p>  
@@ -16,7 +23,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('tipoactividad_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                <td>{{ entity.nombre }}</td>
                 <td>{{ entity.cantidadHoras }}</td>
                 <td><a href="{{ path('tipoactividad_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                 </td>

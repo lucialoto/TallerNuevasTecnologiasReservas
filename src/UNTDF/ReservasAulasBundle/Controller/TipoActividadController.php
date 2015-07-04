@@ -53,7 +53,14 @@ class TipoActividadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipoactividad_show', array('id' => $entity->getId())));
+            $this->addFlash(
+                'notice',
+                'Tipo de actividad creada con éxito!'
+            );
+
+            return $this->redirect($this->generateUrl('tipoactividad'));
+
+            //return $this->redirect($this->generateUrl('tipoactividad_index', array('id' => $entity->getId())));
         }
 
         return array(
@@ -76,7 +83,7 @@ class TipoActividadController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear'));
 
         return $form;
     }
@@ -106,7 +113,7 @@ class TipoActividadController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id)
+    /*public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -122,7 +129,7 @@ class TipoActividadController extends Controller
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
-    }
+    }*/
 
     /**
      * Displays a form to edit an existing TipoActividad entity.
@@ -165,7 +172,7 @@ class TipoActividadController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -192,8 +199,12 @@ class TipoActividadController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Tipo de actividad modificada con éxito!'
+            );
 
-            return $this->redirect($this->generateUrl('tipoactividad_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tipoactividad'));
         }
 
         return array(
@@ -240,7 +251,7 @@ class TipoActividadController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('tipoactividad_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }
