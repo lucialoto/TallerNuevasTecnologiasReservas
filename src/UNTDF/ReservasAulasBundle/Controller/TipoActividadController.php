@@ -106,31 +106,7 @@ class TipoActividadController extends Controller
         );
     }
 
-    /**
-     * Finds and displays a TipoActividad entity.
-     *
-     * @Route("/{id}", name="tipoactividad_show")
-     * @Method("GET")
-     * @Template()
-     */
-    /*public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('UNTDFReservasAulasBundle:TipoActividad')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find TipoActividad entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
-    }*/
-
+    
     /**
      * Displays a form to edit an existing TipoActividad entity.
      *
@@ -234,6 +210,10 @@ class TipoActividadController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Tipo de actividad eliminada con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('tipoactividad'));

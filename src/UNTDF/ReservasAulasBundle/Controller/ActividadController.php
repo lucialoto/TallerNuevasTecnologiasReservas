@@ -45,7 +45,12 @@ class ActividadController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('actividad_show', array('id' => $entity->getId())));
+            $this->addFlash(
+                'notice',
+                'Actividad creada con éxito!'
+            );
+
+            return $this->redirect($this->generateUrl('actividad'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Actividad:new.html.twig', array(
@@ -68,7 +73,7 @@ class ActividadController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -88,27 +93,6 @@ class ActividadController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Actividad entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('UNTDFReservasAulasBundle:Actividad')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Actividad entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('UNTDFReservasAulasBundle:Actividad:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing Actividad entity.
@@ -148,7 +132,7 @@ class ActividadController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -172,8 +156,12 @@ class ActividadController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Actividad modificada con éxito!'
+            );
 
-            return $this->redirect($this->generateUrl('actividad_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('actividad'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Actividad:edit.html.twig', array(
@@ -201,6 +189,10 @@ class ActividadController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Actividad borrada con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('actividad'));
@@ -218,7 +210,7 @@ class ActividadController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('actividad_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }
