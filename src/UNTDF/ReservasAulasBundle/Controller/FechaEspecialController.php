@@ -44,7 +44,8 @@ class FechaEspecialController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('fechaespecial', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('fechaespecial', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('fechaespecial'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:FechaEspecial:new.html.twig', array(
