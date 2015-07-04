@@ -1,3 +1,6 @@
+untdf_reservas_aulas_user:
+    resource: "@UNTDFReservasAulasBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user
 untdf_reservas_aulas_reserva:
     resource: "@UNTDFReservasAulasBundle/Resources/config/routing/reserva.yml"
     prefix:   /admin/reserva
