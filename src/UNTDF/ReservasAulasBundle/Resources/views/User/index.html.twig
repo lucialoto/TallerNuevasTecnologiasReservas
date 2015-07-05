@@ -10,7 +10,7 @@
             <tr>
                 <th>Usuario</th>
                 <th>E-mail</th>
-                <th>Acción<>
+                <th>Acci&oacute;n</th>
             </tr>
         </thead>
         <tbody>
@@ -19,7 +19,7 @@
                 
                 <td>{{ entity.username }}</td>
                 <td>{{ entity.email }}</td>
-                <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Ver</a></td>
+                <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Ver</a></td>
             </tr>
         {% endfor %}
         </tbody>
