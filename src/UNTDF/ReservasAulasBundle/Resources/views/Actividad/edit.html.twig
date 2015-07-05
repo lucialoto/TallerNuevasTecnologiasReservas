@@ -1,27 +1,32 @@
 {% extends '::base.html.twig' %}
 
-{% block stylesheets -%}
-    <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/css/select2.min.css')}}" />
-{% endblock %}
-
 {% block body -%}
-    <h1>Actividad edit</h1>
+    <h1>Edición de actividad</h1>
 
-    {{ form(edit_form) }}
+    {{ form_start(edit_form) }}
+        {{ form_errors(edit_form) }}
+        
+        <div>
+            {{ form_label(edit_form.nombre) }}
+            {{ form_errors(edit_form.nombre) }}
+            {{ form_widget(edit_form.nombre) }}
+        </div>
+        <p>----------</p>
+        <div>
+            {{ form_label(edit_form.tipoactividad) }}
+            {{ form_errors(edit_form.tipoactividad) }}
+            {{ form_widget(edit_form.tipoactividad) }}
+        </div>
+        <p>----------</p>
+        
+        
+        {{ form_end(edit_form) }}
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('actividad') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
-{% endblock %}
+        <a class="btn btn-primary" href="{{ path('actividad') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            Volver a la lista
+        </a>
+   
+    {{ form(delete_form) }}
 
-{% block javascripts -%}
-    <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
-    <script type="text/javascript">
-      //  $('select').select2();
-    </script>
+
 {% endblock %}

@@ -1,39 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Actividad list</h1>
+    <h1>Lista de Actividades</h1>
 
-    <table class="records_list">
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success flash-notice">
+            <span aria-hidden="true">{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
+
+    <p><a class="btn btn-primary" href="{{ path('actividad_new') }}">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR
+        </a></p>  
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Actions</th>
+                <th>Tipo de actividad</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('actividad_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('actividad_show', { 'id': entity.id  }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('actividad_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.tipoactividad }}</td>
+                <td><a href="{{ path('actividad_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('actividad_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

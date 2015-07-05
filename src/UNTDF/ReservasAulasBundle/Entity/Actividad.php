@@ -5,6 +5,8 @@ use Doctrine\ORM\Mapping as ORM;
 use UNTDF\ReservasAulasBundle\Entity\TipoActividad;
 
 /**
+ * Actividad
+ *
  *  @ORM\Table(name="actividad")
  *  @ORM\Entity */
 class Actividad extends Evento

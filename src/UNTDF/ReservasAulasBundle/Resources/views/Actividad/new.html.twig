@@ -1,15 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Actividad creation</h1>
+    <h1>Nueva Actividad</h1>
 
     {{ form(form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('actividad') }}">
-            Back to the list
+        <a class="btn btn-primary" href="{{ path('actividad') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            Volver a la lista
         </a>
-    </li>
-</ul>
+
 {% endblock %}
