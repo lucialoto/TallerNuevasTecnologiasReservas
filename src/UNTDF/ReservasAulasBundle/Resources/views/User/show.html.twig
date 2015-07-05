@@ -1,28 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>User</h1>
+    <h1>Usuario</h1>
+    <h3>Nombre <small>{{ entity.username }}</small></h3>
+    <h3>Email <small>{{ entity.email }}</small></h3>
+    
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_user') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('admin_user_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
+     <fieldset class="buttons">
+        <a class="btn btn-primary" href="{{ path('admin_user') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Lista</a>
+    
+        
+     </fieldset>
+        {{ form(delete_form) }}
 </ul>
 {% endblock %}

@@ -76,3 +76,85 @@ UNTDF\ReservasAulasBundle\Entity\FechaEspecial:
                 max: 30
                 minMessage: "La descripción de la fecha tiene que tener como minimo {{ limit }} caracteres."
                 maxMessage: "La descripción de la fecha tiene que tener como maximo {{ limit }} caracteres."
+
+UNTDF\ReservasAulasBundle\Entity\TipoActividad:
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 30
+                minMessage: "El nombre del tipo de actividad tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del tipo de actividad tiene que tener como maximo {{ limit }} caracteres."
+        cantidadHoras:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 1
+                max: 4
+                minMessage: "La cantidad de horas tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "La cantidad de horas tiene que tener como maximo {{ limit }} caracteres."  
+
+UNTDF\ReservasAulasBundle\Entity\Actividad:
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 30
+                minMessage: "El nombre de la actividad tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre de la actividad tiene que tener como maximo {{ limit }} caracteres."
+
+UNTDF\ReservasAulasBundle\Entity\Curso:
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 30
+                minMessage: "El nombre del curso tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del curso tiene que tener como maximo {{ limit }} caracteres."
+        anio:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 1
+                max: 4
+                minMessage: "El año tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El año tiene que tener como maximo {{ limit }} caracteres."  
+        cantidadHoras:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 1
+                max: 4
+                minMessage: "La cantidad de horas tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "La cantidad de horas tiene que tener como maximo {{ limit }} caracteres."
+
+UNTDF\ReservasAulasBundle\Entity\Carrera:
+    properties:
+        nombre:
+            - NotBlank:  
+                message: no puede estar en blanco.
+            - NotNull:
+                message: no puede ser nulo.
+            - Length:
+                min: 4
+                max: 60
+                minMessage: "El nombre del curso tiene que tener como minimo {{ limit }} caracteres."
+                maxMessage: "El nombre del curso tiene que tener como maximo {{ limit }} caracteres."  

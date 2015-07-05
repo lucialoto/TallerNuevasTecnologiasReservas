@@ -1,45 +1,37 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Curso list</h1>
+    <h1>Lista de Cursos</h1>
 
-    <table class="records_list">
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success flash-notice">
+            <span aria-hidden="true">{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
+
+    <p><a class="btn btn-primary" href="{{ path('curso_new') }}">
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR
+        </a></p>  
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Anio</th>
-                <th>Canthoras</th>
                 <th>Nombre</th>
-                <th>Actions</th>
+                <th>Año</th>
+                <th>Cant. de horas</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('curso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
                 <td>{{ entity.anio }}</td>
                 <td>{{ entity.cantHoras }}</td>
-                <td>{{ entity.nombre }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('curso_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('curso_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <td><a href="{{ path('curso_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('curso_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

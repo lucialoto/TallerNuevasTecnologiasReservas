@@ -43,8 +43,12 @@ class CursoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Curso creado con éxito!'
+            );
 
-            return $this->redirect($this->generateUrl('curso_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('curso'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Curso:new.html.twig', array(
@@ -67,7 +71,7 @@ class CursoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -87,28 +91,7 @@ class CursoController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Curso entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('UNTDFReservasAulasBundle:Curso')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Curso entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('UNTDFReservasAulasBundle:Curso:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
+    
     /**
      * Displays a form to edit an existing Curso entity.
      *
@@ -147,7 +130,7 @@ class CursoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -171,8 +154,12 @@ class CursoController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Curso modificado con éxito!'
+            );
 
-            return $this->redirect($this->generateUrl('curso_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('curso'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Curso:edit.html.twig', array(
@@ -200,6 +187,10 @@ class CursoController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Curso borrado con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('curso'));
@@ -217,7 +208,7 @@ class CursoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('curso_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }

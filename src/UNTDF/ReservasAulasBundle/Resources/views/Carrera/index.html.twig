@@ -1,7 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Carrera</h1>
+    <h1>Lista de Carreras</h1>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success flash-notice">
+            <span aria-hidden="true">{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
+
     <p><a class="btn btn-primary" href="{{ path('carrera_new') }}">
         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR
         </a></p>  
@@ -15,7 +22,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('carrera_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                <td>{{ entity.nombre }}</td>
                 <td><a href="{{ path('carrera_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
                 </td>
             </tr>

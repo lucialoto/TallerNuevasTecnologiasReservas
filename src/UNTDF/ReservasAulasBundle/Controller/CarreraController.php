@@ -43,8 +43,12 @@ class CarreraController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Carrera creada con éxito!'
+            );
 
-            return $this->redirect($this->generateUrl('carrera_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('carrera'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Carrera:new.html.twig', array(
@@ -67,7 +71,7 @@ class CarreraController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -87,28 +91,7 @@ class CarreraController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Carrera entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('UNTDFReservasAulasBundle:Carrera')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Carrera entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('UNTDFReservasAulasBundle:Carrera:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-
+    
     /**
      * Displays a form to edit an existing Carrera entity.
      *
@@ -147,7 +130,7 @@ class CarreraController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Aceptar'));
 
         return $form;
     }
@@ -171,8 +154,12 @@ class CarreraController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Carrera modificada con éxito!'
+            );
 
-            return $this->redirect($this->generateUrl('carrera_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('carrera'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Carrera:edit.html.twig', array(
@@ -200,6 +187,10 @@ class CarreraController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Carrera borrada con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('carrera'));
@@ -217,7 +208,7 @@ class CarreraController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('carrera_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }
