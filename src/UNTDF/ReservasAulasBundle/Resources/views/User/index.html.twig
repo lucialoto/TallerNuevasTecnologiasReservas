@@ -2,7 +2,7 @@
 
 {% block body -%}
     <h1>Usuarios</h1>
-    <p><a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
+    <p><a class="btn btn-primary" href="{{path('fos_user_registration_register')}}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
     </p>
 
     <table class="table table-bordered">
@@ -10,6 +10,7 @@
             <tr>
                 <th>Usuario</th>
                 <th>E-mail</th>
+                <th>Acción<>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +19,7 @@
                 
                 <td>{{ entity.username }}</td>
                 <td>{{ entity.email }}</td>
-                
+                <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Ver</a></td>
             </tr>
         {% endfor %}
         </tbody>

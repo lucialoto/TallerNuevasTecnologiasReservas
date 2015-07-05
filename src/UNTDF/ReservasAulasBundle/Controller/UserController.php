@@ -24,9 +24,9 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('UNTDFReservasAulasBundle:User')->findAll();
-
+        
         return $this->render('UNTDFReservasAulasBundle:User:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $entities,            
         ));
     }
     /**
