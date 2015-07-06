@@ -91,6 +91,7 @@ class AulaController extends Controller
      * Finds and displays a Aula entity.
      *
      */
+    /*
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -108,7 +109,7 @@ class AulaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+    /
     /**
      * Displays a form to edit an existing Aula entity.
      *

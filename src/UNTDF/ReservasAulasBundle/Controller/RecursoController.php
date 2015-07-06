@@ -121,6 +121,7 @@ class RecursoController extends Controller
      * Finds and displays a Recurso entity.
      *
      */
+    /*
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -138,7 +139,7 @@ class RecursoController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+    /
     /**
      * Displays a form to edit an existing Recurso entity.
      *

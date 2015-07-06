@@ -92,6 +92,7 @@ class DocenteController extends Controller
      * Finds and displays a Docente entity.
      *
      */
+    /*
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -109,7 +110,9 @@ class DocenteController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+       
+     */
+    
     /**
      * Displays a form to edit an existing Docente entity.
      *

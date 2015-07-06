@@ -2,7 +2,12 @@
 
 {% block body -%}
     <h1>Usuarios</h1>
-    <p><a class="btn btn-primary" href="{{path('fos_user_registration_register')}}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success flash-notice"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+            <span aria-hidden="true">{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
+    <p><a class="btn btn-primary" href="{{path('fos_user_registration_register')}}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> REGISTRAR</a>
     </p>
 
     <table class="table table-bordered">

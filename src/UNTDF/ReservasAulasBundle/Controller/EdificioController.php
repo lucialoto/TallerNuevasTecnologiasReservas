@@ -67,7 +67,7 @@ class EdificioController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear'));
 
         return $form;
     }
@@ -91,6 +91,7 @@ class EdificioController extends Controller
      * Finds and displays a Edificio entity.
      *
      */
+    /*
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -108,7 +109,7 @@ class EdificioController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+    /
     /**
      * Displays a form to edit an existing Edificio entity.
      *
@@ -147,7 +148,7 @@ class EdificioController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar'));
 
         return $form;
     }
@@ -217,7 +218,7 @@ class EdificioController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('edificio_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar'))
             ->getForm()
         ;
     }

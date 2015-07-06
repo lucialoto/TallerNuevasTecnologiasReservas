@@ -92,6 +92,7 @@ class FechaEspecialController extends Controller
      * Finds and displays a FechaEspecial entity.
      *
      */
+    /*
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -109,7 +110,9 @@ class FechaEspecialController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+       
+     */
+    
     /**
      * Displays a form to edit an existing FechaEspecial entity.
      *

@@ -16,8 +16,8 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('edificio_show', { 'id': entity.edificio.id }) }}">{{ entity.edificio }}</a></td>
-                <td><a href="{{ path('aulas_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                <td>{{ entity.edificio }}</td>
+                <td>{{ entity.nombre }}</td>
                 <td>
                 
                     <a href="{{ path('aulas_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span> EDITAR</a>
