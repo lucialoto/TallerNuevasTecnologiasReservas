@@ -3,6 +3,8 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use UNTDF\ReservasAulasBundle\Entity\Curso;
 
 /**
  * Carrera
@@ -24,6 +26,15 @@ class Carrera
      * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
+
+    /**
+    * @ORM\ManyToMany(targetEntity="Curso")
+     * @ORM\JoinTable(name="carreras_cursos",
+     *      joinColumns={@ORM\JoinColumn(name="carrera_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="curso_id", referencedColumnName="id")}
+     *      )
+     **/
+    /*private $cursos;*/
 
 
     /**
@@ -58,4 +69,22 @@ class Carrera
     {
         return $this->nombre;
     }
+
+    /*public function __construct()
+    {
+        $this->cursos = new ArrayCollection();        
+    }
+
+    public function obtenerListaCursos(){
+        $listacursos = '';
+        foreach ($this->cursos as $curso) {
+            if($listacursos <> ''){
+                $listacursos = $listacursos . ', ';     
+            }
+            $listacursos = $listacursos . $curso->getNombre();
+            $listacursos = trim($listacursos);
+        }
+        return $listacursos;
+    }*/
+
 }

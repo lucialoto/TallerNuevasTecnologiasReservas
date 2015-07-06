@@ -29,6 +29,12 @@ class Curso extends Evento
      * @ORM\Column(name="cantHoras", type="integer")
      */
     private $cantHoras;
+    /*
+    /**
+    * @ORM\ManyToMany(targetEntity="Curso")
+     *      
+     **/
+    /*private $carreras;*/
     
     public function getId() {
         return $this->id;
@@ -53,6 +59,23 @@ class Curso extends Evento
     public function getHorasMinimas(){
         return $this->cantHoras;
     }
+
+    /*public function __construct()
+    {
+        $this->carreras = new ArrayCollection();        
+    }
+
+    public function obtenerListaCarreras(){
+        $listacarreras = '';
+        foreach ($this->carreras as $carrera) {
+            if($listacarreras <> ''){
+                $listacarreras = $listacarreras . ', ';     
+            }
+            $listacarreras = $listacursos . $carrera->getNombre();
+            $listacarreras = trim($listacarreras);
+        }
+        return $listacarreras;
+    }*/
 
 }
 

@@ -135,7 +135,7 @@ UNTDF\ReservasAulasBundle\Entity\Curso:
                 max: 4
                 minMessage: "El año tiene que tener como minimo {{ limit }} caracteres."
                 maxMessage: "El año tiene que tener como maximo {{ limit }} caracteres."  
-        cantidadHoras:
+        cantHoras:
             - NotBlank:  
                 message: no puede estar en blanco.
             - NotNull:
