@@ -192,7 +192,7 @@ class ReservaController extends Controller
      * Finds and displays a Reserva entity.
      *
      */
-    public function showAction($id)
+   /* public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -209,7 +209,8 @@ class ReservaController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
+    */
+    
     /**
      * Displays a form to edit an existing Reserva entity.
      *

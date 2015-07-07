@@ -29,7 +29,7 @@
         <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('reserva_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.id }}</td>
                     <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
                     <td>{% if entity.horadesde %}{{ entity.horadesde|date('H:i:s') }}{% endif %}</td>
                     <td>{% if entity.horahasta %}{{ entity.horahasta|date('H:i:s') }}{% endif %}</td>
