@@ -2,6 +2,11 @@
 
 {% block body -%}
     <h1>Docentes</h1>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success flash-notice">
+            <span aria-hidden="true">{{ flashMessage }}</span>
+        </div>
+    {% endfor %}
     <p><a class="btn btn-primary" href="{{ path('docente_new') }}"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> AGREGAR</a>
     </p>    
     <table class="table table-bordered">

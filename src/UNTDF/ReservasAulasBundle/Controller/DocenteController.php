@@ -43,7 +43,10 @@ class DocenteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-            
+            $this->addFlash(
+                'notice',
+                'Docente creado con éxito!'
+            );
             return $this->redirect($this->generateUrl('docente'));
             //return $this->redirect($this->generateUrl('docente', array('id' => $entity->getId())));
         }
@@ -175,7 +178,10 @@ class DocenteController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->addFlash(
+                'notice',
+                'Docente modificado con éxito!'
+            );
             return $this->redirect($this->generateUrl('docente_edit', array('id' => $id)));
         }
 
@@ -204,6 +210,10 @@ class DocenteController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Docente borrado con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('docente'));

@@ -43,6 +43,10 @@ class AulaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Aula creada con éxito!'
+            );
             return $this->redirect($this->generateUrl('aulas'));
             //return $this->redirect($this->generateUrl('aulas_show', array('id' => $entity->getId())));
         }
@@ -174,7 +178,10 @@ class AulaController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->addFlash(
+                'notice',
+                'Aula modificada con éxito!'
+            );
             return $this->redirect($this->generateUrl('aulas_edit', array('id' => $id)));
         }
 
@@ -203,6 +210,10 @@ class AulaController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Aula borrada con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('aulas'));

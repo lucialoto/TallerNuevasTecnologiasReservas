@@ -43,6 +43,10 @@ class EdificioController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Edificio creado con éxito!'
+            );
             return $this->redirect($this->generateUrl('edificio'));
             //return $this->redirect($this->generateUrl('edificio_show', array('id' => $entity->getId())));
         }
@@ -172,7 +176,10 @@ class EdificioController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->addFlash(
+                'notice',
+                'Edificio modificado con éxito!'
+            );
             return $this->redirect($this->generateUrl('edificio_edit', array('id' => $id)));
         }
 
@@ -201,6 +208,10 @@ class EdificioController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Edificio borrado con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('edificio'));
