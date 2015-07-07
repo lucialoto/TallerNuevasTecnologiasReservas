@@ -35,7 +35,7 @@ class Curso extends Evento
     private $cantHoras;
     /*
     /**
-    * @ORM\ManyToMany(targetEntity="Carrera")
+    * @ORM\ManyToMany(targetEntity="Carrera", mappedBy="cursos")
      *      
      **/
     private $carreras;

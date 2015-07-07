@@ -28,7 +28,7 @@ class Carrera
     private $nombre;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Curso")
+    * @ORM\ManyToMany(targetEntity="Curso", inversedBy="carreras")
      * @ORM\JoinTable(name="carreras_cursos",
      *      joinColumns={@ORM\JoinColumn(name="carrera_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="curso_id", referencedColumnName="id")}
