@@ -73,6 +73,10 @@ class RecursoController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Recurso creado con éxito!'
+            );
             return $this->redirect($this->generateUrl('recurso'));
             //return $this->redirect($this->generateUrl('recurso', array('id' => $entity->getId())));
         }
@@ -202,7 +206,10 @@ class RecursoController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->addFlash(
+                'notice',
+                'Recurso modificado con éxito!'
+            );
             return $this->redirect($this->generateUrl('recurso_edit', array('id' => $id)));
         }
 
@@ -231,6 +238,10 @@ class RecursoController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Recurso borrado con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('recurso'));
