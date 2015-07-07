@@ -18,6 +18,12 @@ class CursoType extends AbstractType
             ->add('nombre')
             ->add('anio')
             ->add('cantHoras')
+            ->add('carreras', 'entity', array(
+                    'class' => 'UNTDFReservasAulasBundle:Carrera',
+                    'required' => true,
+                    'multiple' => true
+                        )
+            )
         ;
     }
     

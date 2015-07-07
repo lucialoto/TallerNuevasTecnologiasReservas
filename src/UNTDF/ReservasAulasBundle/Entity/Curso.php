@@ -2,6 +2,10 @@
 namespace UNTDF\ReservasAulasBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+use UNTDF\ReservasAulasBundle\Entity\Carrera;
+
 /**
  *  @ORM\Table(name="curso")
  *  @ORM\Entity */
@@ -31,10 +35,10 @@ class Curso extends Evento
     private $cantHoras;
     /*
     /**
-    * @ORM\ManyToMany(targetEntity="Curso")
+    * @ORM\ManyToMany(targetEntity="Carrera")
      *      
      **/
-    /*private $carreras;*/
+    private $carreras;
     
     public function getId() {
         return $this->id;
@@ -58,9 +62,14 @@ class Curso extends Evento
 
     public function getHorasMinimas(){
         return $this->cantHoras;
+    }    
+
+    public function getCarreras()
+    {
+        return $this->carreras;
     }
 
-    /*public function __construct()
+    public function __construct()
     {
         $this->carreras = new ArrayCollection();        
     }
@@ -75,7 +84,7 @@ class Curso extends Evento
             $listacarreras = trim($listacarreras);
         }
         return $listacarreras;
-    }*/
+    }
 
 }
 

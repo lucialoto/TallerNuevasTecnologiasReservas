@@ -34,7 +34,7 @@ class Carrera
      *      inverseJoinColumns={@ORM\JoinColumn(name="curso_id", referencedColumnName="id")}
      *      )
      **/
-    /*private $cursos;*/
+    private $cursos;
 
 
     /**
@@ -70,7 +70,7 @@ class Carrera
         return $this->nombre;
     }
 
-    /*public function __construct()
+    public function __construct()
     {
         $this->cursos = new ArrayCollection();        
     }
@@ -85,6 +85,11 @@ class Carrera
             $listacursos = trim($listacursos);
         }
         return $listacursos;
-    }*/
+    }
+    
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
 
 }
