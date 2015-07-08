@@ -94,6 +94,6 @@ class Aula
     
     public function __toString()
     {
-        return $this->getNombre();
+        return $this->getEdificio()->getNombre() . " - " . $this->getNombre();
     }
 }
