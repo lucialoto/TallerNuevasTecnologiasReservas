@@ -35,6 +35,7 @@ class LoadUsuarios extends AbstractFixture implements OrderedFixtureInterface
             $usuario->setUsername($usuarioValue['nombre']);
             $usuario->setPassword($usuarioValue['password']);
             $usuario->setEmail($usuarioValue['email']);
+            $usuario->setEnabled(true);
             
             $this->addReference( 'usuario-' . $usuarioValue['nombre'], $usuario);
                         
