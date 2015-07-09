@@ -33,6 +33,8 @@ class LoadAulas extends AbstractFixture implements OrderedFixtureInterface
             $aula->setEdificio($this->getReference('edificio-' . $aulaValue['edificio']) );
             $aula->setNombre($aulaValue['nombre']);                    
             
+            $this->addReference( 'aula-' . $aulaValue['nombre'], $aula);
+                        
             $manager->persist($aula);
         }
         

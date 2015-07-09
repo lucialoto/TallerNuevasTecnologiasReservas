@@ -212,4 +212,15 @@ class Reserva
         return $listarecursos;
     }
 
+    public function addRecursos(UNTDF\ReservasAulasBundle\Entity\Recurso $recurso)
+    {
+        $this->recursos[] = $recurso;
+        return $this;
+    }
+
+    public function removeRecursos(UNTDF\ReservasAulasBundle\Entity\Recurso $recurso)
+    {
+        $this->recursos->removeElement($recurso);
+    }
+    
 }

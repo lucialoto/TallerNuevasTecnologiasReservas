@@ -41,6 +41,8 @@ class LoadActividad extends AbstractFixture implements OrderedFixtureInterface
             $actividad->setNombre($actividadValue['nombre']);   
             $actividad->setTipoActividad($this->getReference($actividadValue['tipoActividad']));                 
             
+            $this->addReference( 'evento-' . $actividadValue['nombre'], $actividad);
+            
             $manager->persist($actividad);
         }
         

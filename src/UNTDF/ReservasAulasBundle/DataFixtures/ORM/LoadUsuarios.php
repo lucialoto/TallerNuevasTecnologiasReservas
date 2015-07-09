@@ -14,14 +14,30 @@ class LoadUsuarios implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {        
-        $userAdmin = new User();
-        $userAdmin->setUsername('admin');
-        $userAdmin->setPlainPassword('password');
-        $userAdmin->setEmail('admin@untdf.edu.ar');
-        $userAdmin->setEnabled(true);
-        $userAdmin->addRole(User::ROLE_SUPER_ADMIN);
-        
-        $manager->persist($userAdmin);
+        $usuarios = array( 
+            array( 
+                'nombre' => 'admin',
+                'password' => 'password',
+                'email' => 'admin@untdf.edu.ar'
+            ),
+            array( 
+                'nombre' => 'usuario',
+                'password' => 'password',
+                'email' => 'usuario@untdf.edu.ar'
+            ),
+        );
+    
+        foreach( $usuarios as $usuarioValue ){
+                        
+            $usuario = new User();
+            $usuario->setUsername($usuarioValue['nombre']);
+            $usuario->setPassword($usuarioValue['password']);
+            $usuario->setPassword($usuarioValue['email']);
+            
+            $this->addReference( 'usuario-' . $usuarioValue['nombre'], $usuario);
+                        
+            $manager->persist($usuario);
+        }    
         
         $manager->flush();
     }

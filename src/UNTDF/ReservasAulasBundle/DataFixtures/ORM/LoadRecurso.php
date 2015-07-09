@@ -25,7 +25,9 @@ class LoadRecurso implements FixtureInterface
             
             $recurso = new Recurso();
             $recurso->setNombre( $recursoValue );
-            
+
+            $this->addReference( 'recurso-' . $recursoValue, $recurso);
+
             $manager->persist($recurso);
         }
         

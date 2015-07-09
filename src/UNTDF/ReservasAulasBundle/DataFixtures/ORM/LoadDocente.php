@@ -37,6 +37,8 @@ class LoadDocente implements FixtureInterface {
             $docente = new Docente();
             $docente->setNombre($docenteValue['nombre']);
             $docente->setDni($docenteValue['dni']);
+            
+            $this->addReference( 'docente-' . $docenteValue['nombre'], $docente);          
 
             $manager->persist($docente);
         }
