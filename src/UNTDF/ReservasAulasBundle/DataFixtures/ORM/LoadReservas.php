@@ -2,12 +2,16 @@
 
 namespace UNTDF\ReservasAulasBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
+use \DateTime;
 
 use UNTDF\ReservasAulasBundle\Entity\Reserva;
 
-class LoadReservas implements FixtureInterface
+
+class LoadReservas extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -21,8 +25,8 @@ class LoadReservas implements FixtureInterface
                 'estado' => 'solicitado',
                 'evento' => 'Programacion',
                 'fecha' => (new \DateTime('now')),
-                'horadesde' => '08:00:00',
-                'horahasta' => '09:00:00',
+                'horadesde' => (new \DateTime('08:00:00')),
+                'horahasta' => (new \DateTime('09:00:00')),
                 'observacion' => 'S/O',
                 'recurso' => 'Acceso a Internet',
                 'reservafecha' => (new \DateTime('now')),
@@ -34,8 +38,8 @@ class LoadReservas implements FixtureInterface
                 'estado' => 'solicitado',
                 'evento' => 'Conservacion y restauracion',
                 'fecha' => (new \DateTime('now')),
-                'horadesde' => '08:00:00',
-                'horahasta' => '10:00:00',
+                'horadesde' => (new \DateTime('09:00:00')),
+                'horahasta' => (new \DateTime('12:00:00')),
                 'observacion' => 'S/O',
                 'recurso' => 'Acceso a Internet',
                 'reservafecha' => (new \DateTime('now')),
@@ -47,8 +51,8 @@ class LoadReservas implements FixtureInterface
                 'estado' => 'solicitado',
                 'evento' => 'Seguridad e higiene',
                 'fecha' => (new \DateTime('now')),
-                'horadesde' => '12:00:00',
-                'horahasta' => '14:00:00',
+                'horadesde' => (new \DateTime('12:00:00')),
+                'horahasta' => (new \DateTime('14:30:00')),
                 'observacion' => 'S/O',
                 'recurso' => 'Acceso a Internet',
                 'reservafecha' => (new \DateTime('now')),
@@ -78,6 +82,6 @@ class LoadReservas implements FixtureInterface
         
     public function getOrder()
     {
-        return 3;
+        return 4;
     }
 }

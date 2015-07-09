@@ -3,11 +3,13 @@
 namespace UNTDF\ReservasAulasBundle\DataFixtures\ORM;
 
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
 use UNTDF\ReservasAulasBundle\Entity\Docente;
 
-class LoadDocente implements FixtureInterface {
+class LoadDocente extends AbstractFixture implements OrderedFixtureInterface {
 
     /**
      * {@inheritDoc}
@@ -45,7 +47,11 @@ class LoadDocente implements FixtureInterface {
 
         $manager->flush();
     }
-
+    
+    public function getOrder()
+    {
+        return 1;
+    }
 }
 
 

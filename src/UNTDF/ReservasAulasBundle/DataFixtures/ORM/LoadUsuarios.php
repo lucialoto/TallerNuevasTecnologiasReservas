@@ -2,12 +2,14 @@
 
 namespace UNTDF\ReservasAulasBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 
 use UNTDF\ReservasAulasBundle\Entity\User;
 
-class LoadUsuarios implements FixtureInterface
+class LoadUsuarios extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -32,7 +34,7 @@ class LoadUsuarios implements FixtureInterface
             $usuario = new User();
             $usuario->setUsername($usuarioValue['nombre']);
             $usuario->setPassword($usuarioValue['password']);
-            $usuario->setPassword($usuarioValue['email']);
+            $usuario->setEmail($usuarioValue['email']);
             
             $this->addReference( 'usuario-' . $usuarioValue['nombre'], $usuario);
                         
@@ -40,5 +42,10 @@ class LoadUsuarios implements FixtureInterface
         }    
         
         $manager->flush();
+    }
+    
+    public function getOrder()
+    {
+        return 1;
     }
 }
