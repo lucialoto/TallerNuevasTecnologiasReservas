@@ -5,7 +5,7 @@ namespace UNTDF\ReservasAulasBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-
+use DateTime;
 use UNTDF\ReservasAulasBundle\Entity\Reserva;
 use UNTDF\ReservasAulasBundle\Form\ReservaType;
 
@@ -81,28 +81,7 @@ class ReservaController extends Controller
         return $response;
     }
     
-    /*
-     * Lists all Reserva entities.
-     *
-     */
-    public function index2Action(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        
-        $entities = $em->createQuery(
-                'SELECT R FROM UNTDFReservasAulasBundle:Reserva R '
-                . 'ORDER BY R.fecha DESC, R.horadesde DESC, R.horahasta DESC'
-            )
-            ->getResult();
-
-
-        return $this->render('UNTDFReservasAulasBundle:Reserva:index.html.twig', array(
-            'entities' => $entities,
-        ));
-    }
-    
-    
+   
     /**
      * Lists all Reserva entities.
      *
@@ -116,6 +95,40 @@ class ReservaController extends Controller
         return $this->render('UNTDFReservasAulasBundle:Reserva:index.html.twig', array(
             'entities' => $entities,
         ));
+    }
+
+    /*
+     * 
+
+     * @param Request $request
+     * @return type 
+    */
+    public function indexfiltradoAction(Request $request){
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $eventos = $em->getRepository('UNTDFReservasAulasBundle:Evento')->findAll();
+        $aulas = $em->getRepository('UNTDFReservasAulasBundle:Aula')->findAll();
+        $docentes = $em->getRepository('UNTDFReservasAulasBundle:Docente')->findAll();        
+
+        $fechadesde = $request->query->get('fechadesde'); 
+        $fechahasta = $request->query->get('fechahasta');
+        if(is_null($fechadesde)){
+            $fechadesde = new DateTime("now");
+        }
+        if(is_null($fechahasta)){
+            $fechahasta = date_modify(new DateTime("now"),"+7 days");
+        }
+        
+        $parametros = array(
+            'eventos'  => $eventos,
+            'aulas'    => $aulas,
+            'docentes' => $docentes,
+            'fechadesde' => $fechadesde,
+            'fechahasta' => $fechahasta
+        );
+        
+        return $this->render('UNTDFReservasAulasBundle:Reserva:indexfiltrado.html.twig', $parametros);
     }
     
     /**
@@ -140,8 +153,10 @@ class ReservaController extends Controller
                 'notice',
                 'Reserva creada !'
             );
-            
-            return $this->redirect($this->generateUrl('reserva'));
+            $parametros = array('fechadesde'=> date_format($entity->getFecha(), 'Y-m-d'), 
+                'fechahasta'=> date_format(date_modify($entity->getFecha(), "+7 days"), 'Y-m-d'));
+                    
+            return $this->redirect($this->generateUrl('reserva_index_filtrado', $parametros));
             //return $this->redirect($this->generateUrl('reserva_show', array('id' => $entity->getId())));
         }
 
@@ -279,8 +294,11 @@ class ReservaController extends Controller
                 'Reserva Modificada !'
             );
 
+            $parametros = array('fechadesde'=> date_format($entity->getFecha(), 'Y-m-d'), 
+                'fechahasta'=> date_format(date_modify($entity->getFecha(), "+7 days"), 'Y-m-d'));
+
             //return $this->redirect($this->generateUrl('reserva_edit', array('id' => $id)));
-            return $this->redirect($this->generateUrl('reserva'));
+            return $this->redirect($this->generateUrl('reserva_index_filtrado', $parametros));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Reserva:edit.html.twig', array(
@@ -310,7 +328,7 @@ class ReservaController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('reserva'));
+        return $this->redirect($this->generateUrl('reserva_index_filtrado'));
     }
 
     /**

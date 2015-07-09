@@ -34,7 +34,7 @@ class ReservasMainController extends Controller {
             'aulas'    => $aulas,
             'docentes' => $docentes,
         ));
-
-
     }
-}
+
+    
+ }

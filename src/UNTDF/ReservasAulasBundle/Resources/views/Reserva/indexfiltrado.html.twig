@@ -8,17 +8,22 @@
                 <div class="panel-heading">
                     <h1>Listado de Reservas</h1>
                 </div>
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-danger flash-notice">
+                        <span aria-hidden="true">{{ flashMessage }}</span>
+                    </div>
+                {% endfor %}
                 <div class="panel-body">    
                     <form id="formulariobase">
 
                         <div class="input-daterange input-group" id="datepicker" class="datepicker">
                             <label class="col-sm-1 col-lg-1 control-label" for="fechadesde">Desde</label>
                             <div class="col-sm-2 col-lg-2">
-                                <input type="text" class="form-control" id="fechadesde" name="fechadesde" size="10" value="{{ "now"|date('Y-m-d')}}"/>
+                                <input type="text" class="form-control" id="fechadesde" name="fechadesde" size="10" value="{{ fechadesde |date('Y-m-d')}}"/>
                             </div>
                             <label class="col-sm-1 col-lg-1 control-label" for="fechahasta">hasta</label>
                             <div class="col-sm-2 col-lg-2">
-                                <input type="text" class="form-control" id="fechahasta" name="fechahasta" size="10" value="{{ "now"|date_modify('+7 days')|date('Y-m-d')}}"/>
+                                <input type="text" class="form-control" id="fechahasta" name="fechahasta" size="10" value="{{ fechahasta |date('Y-m-d')}}"/>
                             </div>
                         </div>
 
@@ -121,14 +126,13 @@
             });
 
             $("#btnFiltro").click(function() {
-                $(".listado_tabla_item").remove();
-                //$.getJSON("https://127.0.0.1/reservas/web/app_dev.php/listadoReservas", 
+                $(".listado_tabla_item").remove(); 
                 var pFechadesde = $("#formulariobase :input[name='fechadesde']").val();
                 var pFechahasta = $("#formulariobase :input[name='fechahasta']").val();
                 var pEvento = $("#formulariobase :input[name='evento']").val();
                 var pAula = $("#formulariobase :input[name='aula']").val();
                 var pDocente = $("#formulariobase :input[name='docente']").val();
-                $.getJSON("listadoReservas",
+                $.getJSON("{{ path('reserva_listado_reservas') }}",
                         {fechadesde: pFechadesde,
                             fechahasta: pFechahasta,
                             evento: pEvento,
