@@ -142,6 +142,7 @@ class ReservaController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+        /*
         error_log($request);
         
         $formreq = $request->request->get('untdf_reservasaulasbundle_reserva');
@@ -150,7 +151,8 @@ class ReservaController extends Controller
                 'notice',
                 'form.fecha : ' . $formreqfecha . ' / ' . json_encode($formreq)
         );
-
+        */
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setReservafecha(new \DateTime('now'));

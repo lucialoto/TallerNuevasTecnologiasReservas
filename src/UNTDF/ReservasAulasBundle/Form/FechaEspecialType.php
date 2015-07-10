@@ -18,7 +18,7 @@ class FechaEspecialType extends AbstractType
             ->add('fecha', 'datetime', array(
                     'label' => 'Fecha',
                     'widget' => 'single_text',
-                    'format' => 'Y-M-d',
+                    'format' => 'yyyy-mm-dd',
                     'attr' => array(
                         'class' => 'fechareservada_input_text')
                         ))
