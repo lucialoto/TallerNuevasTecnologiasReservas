@@ -17,7 +17,7 @@ class ReservaType extends AbstractType {
                 ->add('fecha', 'datetime', array(
                     'label' => 'Fecha Reservada',
                     'widget' => 'single_text',
-                    'format' => 'Y-m-d',
+                    'format' => 'yyyy-mm-dd',
                     'attr' => array(
                         'class' => 'fechareservada_input_text')
                         )
