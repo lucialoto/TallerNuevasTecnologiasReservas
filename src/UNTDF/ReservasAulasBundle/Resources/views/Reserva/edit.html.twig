@@ -6,7 +6,13 @@
 
 {% block body -%}
     <h1>Reserva - Modificar/Editar</h1>
-
+                
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-danger flash-notice">
+                        <span aria-hidden="true">{{ flashMessage }}</span>
+                    </div>
+                {% endfor %}
+                
     {# {{ form(form) }} #}
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
