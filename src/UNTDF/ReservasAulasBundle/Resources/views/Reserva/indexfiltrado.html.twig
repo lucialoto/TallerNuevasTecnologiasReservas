@@ -69,9 +69,13 @@
         <div class="col-md-11 col-md-offset-1">    
             <p><button id="btnFiltro" class="btn btn-default"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Aplicar Filtro</button></p>
 
-            <table class="table table-bordered">
+            {# <table id="tabla_filtrada" class="table table-bordered tablesorter tablesorter-bootstrap"> #}
+            {# <table id="tabla_filtrada" class="table table-bordered tablesorter tablesorter-bootstrap"> #}
+            <table id="tabla_filtrada" class="tablesorter tablesorter-bootstrap table table-bordered hasFilters table-striped" role="grid">
                 <thead>
-                    <tr>
+
+
+                    <tr class="tablesorter-headerRow" role="row">
                         {# <th>Id</th> #}
                         <th>Fecha</th>
                         <th>Desde</th>
@@ -83,12 +87,28 @@
                         <th>Recursos</th>
                         <th>Reservado</th>
                         <th>Docente</th>
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <th>Acciones</th>
-                        {% endif %}
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <th>Acciones</th>
+                            {% endif %}
                     </tr>
                 </thead>
                 <tbody class="listado_tabla">
+                    <tr>
+                        {# <th>Id</th> #}
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                        <th>-</th>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <th>-</th>
+                            {% endif %}
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -106,13 +126,19 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css')}}" />
+    <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/vendor/tablesorter/css/theme.default.min.css')}}" />
+    
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/tablesorter/js/jquery.tablesorter.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/tablesorter/js/jquery.tablesorter.widgets.min.js')}}"></script>
+    
+    
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.input-daterange.input-group').datepicker({
                 format: "yyyy-mm-dd",
                 startDate: "2014-01-01",
@@ -125,8 +151,9 @@
                 todayHighlight: true
             });
 
-            $("#btnFiltro").click(function() {
-                $(".listado_tabla_item").remove(); 
+            $("#btnFiltro").click(function () {
+                // $(".listado_tabla_item").remove(); 
+                $('#tabla_filtrada tbody').empty();
                 var pFechadesde = $("#formulariobase :input[name='fechadesde']").val();
                 var pFechahasta = $("#formulariobase :input[name='fechahasta']").val();
                 var pEvento = $("#formulariobase :input[name='evento']").val();
@@ -139,32 +166,41 @@
                             aula: pAula,
                             docente: pDocente
                         },
-                function(result) {
-                    $.each(result, function(i, field) {
+                function (result) {
+                    $.each(result, function (i, field) {
                         var tabla_item = "";
-                        tabla_item = "<tr class='listado_tabla_item'>";
-                        {# tabla_item = tabla_item + "<td>" + field.id + "</td>"; #}
-                        tabla_item = tabla_item + "<td>" + field.fecha + "</td>";
-                        tabla_item = tabla_item + "<td>" + field.horadesde + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.horahasta + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.evento + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.aula + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.estado + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.observacion + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.recursos + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.reservado + "</th>";
-                        tabla_item = tabla_item + "<td>" + field.docente + "</th>";
+        {# tabla_item = "<tr class='listado_tabla_item'>"; #}
+                                            tabla_item = "<tr>";
+        {# tabla_item = tabla_item + "<td>" + field.id + "</td>"; #}
+                                            tabla_item = tabla_item + "<td>" + field.fecha + "</td>";
+                                            tabla_item = tabla_item + "<td>" + field.horadesde + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.horahasta + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.evento + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.aula + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.estado + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.observacion + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.recursos + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.reservado + "</th>";
+                                            tabla_item = tabla_item + "<td>" + field.docente + "</th>";
         {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             tabla_item = tabla_item + "<td><ul><a href=\"admin/reserva/" + field.id + "/edit\"><span class=\"glyphicon glyphicon-pencil\"></span>editar</a></ul></th>";
         {% endif %}
                             tabla_item = tabla_item + "</tr>";
                             $(".listado_tabla").append(tabla_item);
                         });
+                        $("#tabla_filtrada").trigger("update");
                     });
                 });
-                {# agregado para simular la carga inicial #}
-                $('#btnFiltro').trigger('click');
-            });
+        {# agregado para simular la carga inicial #}
+                        $('#btnFiltro').trigger('click');
+
+	$('#tabla_filtrada').tablesorter({
+			widgets        : ['zebra', 'columns'],
+			usNumberFormat : false,
+			sortReset      : true,
+			sortRestart    : true
+		});
+        });
     </script>
 
 {% endblock %}
