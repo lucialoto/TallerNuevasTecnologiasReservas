@@ -210,7 +210,7 @@ class RecursoController extends Controller
                 'notice',
                 'Recurso modificado con éxito!'
             );
-            return $this->redirect($this->generateUrl('recurso_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('recurso'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Recurso:edit.html.twig', array(

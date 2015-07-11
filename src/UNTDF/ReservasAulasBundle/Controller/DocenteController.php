@@ -182,7 +182,7 @@ class DocenteController extends Controller
                 'notice',
                 'Docente modificado con éxito!'
             );
-            return $this->redirect($this->generateUrl('docente_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('docente'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Docente:edit.html.twig', array(

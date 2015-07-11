@@ -180,7 +180,7 @@ class EdificioController extends Controller
                 'notice',
                 'Edificio modificado con éxito!'
             );
-            return $this->redirect($this->generateUrl('edificio_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('edificio'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Edificio:edit.html.twig', array(

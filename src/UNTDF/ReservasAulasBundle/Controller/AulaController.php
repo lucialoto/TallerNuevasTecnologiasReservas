@@ -182,7 +182,7 @@ class AulaController extends Controller
                 'notice',
                 'Aula modificada con éxito!'
             );
-            return $this->redirect($this->generateUrl('aulas_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('aulas'));
         }
 
         return $this->render('UNTDFReservasAulasBundle:Aula:edit.html.twig', array(

@@ -16,8 +16,8 @@ class CursoType extends AbstractType
     {
         $builder        
             ->add('nombre')
-            ->add('anio')
-            ->add('cantHoras')
+            ->add('anio', 'text', array('label' => 'Año'))
+            ->add('cantHoras', 'text', array('label' => 'Carga horaria'))
             ->add('carreras', 'entity', array(
                     'class' => 'UNTDFReservasAulasBundle:Carrera',
                     'required' => true,
