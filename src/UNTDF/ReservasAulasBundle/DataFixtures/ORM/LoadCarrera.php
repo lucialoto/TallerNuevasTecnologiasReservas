@@ -2,12 +2,14 @@
 
 namespace UNTDF\ReservasAulasBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
+
 use Doctrine\Common\Persistence\ObjectManager;
 
 use UNTDF\ReservasAulasBundle\Entity\Carrera;
 
-class LoadCarrera implements FixtureInterface
+class LoadCarrera extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -30,10 +32,15 @@ class LoadCarrera implements FixtureInterface
                         
             $carrera = new Carrera();
             $carrera->setNombre($carreraValue['nombre']);               
-            
+            $this->addReference($carreraValue['nombre'], $carrera);
             $manager->persist($carrera);
         }
         
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 1;
     }
 }

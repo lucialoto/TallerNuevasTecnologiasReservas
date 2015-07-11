@@ -28,11 +28,7 @@ class Carrera
     private $nombre;
 
     /**
-    * @ORM\ManyToMany(targetEntity="Curso", inversedBy="carreras")
-     * @ORM\JoinTable(name="carreras_cursos",
-     *      joinColumns={@ORM\JoinColumn(name="carrera_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="curso_id", referencedColumnName="id")}
-     *      )
+     * @ORM\ManyToMany(targetEntity="Curso")
      **/
     private $cursos;
 
@@ -68,6 +64,11 @@ class Carrera
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function getCursos()
+    {
+        return $this->cursos;
     }
 
     public function __construct()

@@ -33,10 +33,9 @@ class Curso extends Evento
      * @ORM\Column(name="cantHoras", type="integer")
      */
     private $cantHoras;
-    /*
+    
     /**
-    * @ORM\ManyToMany(targetEntity="Carrera", mappedBy="cursos")
-     *      
+     * @ORM\ManyToMany(targetEntity="Carrera")
      **/
     private $carreras;
     
@@ -72,6 +71,10 @@ class Curso extends Evento
     public function __construct()
     {
         $this->carreras = new ArrayCollection();        
+    }
+
+    public function addCarreras($carreras) {
+        $this->carreras[] = $carreras;
     }
 
     public function obtenerListaCarreras(){
