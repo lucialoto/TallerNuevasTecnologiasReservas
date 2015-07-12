@@ -19,16 +19,20 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                
-                <td>{{ entity.username }}</td>
-                <td>{{ entity.email }}</td>
-                <td><a href="{{ path('admin_user_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Ver</a></td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities %}
+                <tr>
+
+                    <td>{{ entity.username }}</td>
+                    <td>{{ entity.email }}</td>
+                    
+                    <td> <form action="{{ path('admin_user_delete', { 'id': entity.id }) }}" method="post">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(deleteForms[entity.id]) }}                            
+                        </form></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-        
-    {% endblock %}
+
+{% endblock %}
