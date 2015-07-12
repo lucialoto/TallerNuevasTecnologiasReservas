@@ -96,6 +96,11 @@ class FechaEspecialController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Fecha creada con éxito!'
+            );
+            
 
             //return $this->redirect($this->generateUrl('fechaespecial', array('id' => $entity->getId())));
             return $this->redirect($this->generateUrl('fechaespecial'));
@@ -228,8 +233,14 @@ class FechaEspecialController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Fecha modificada con éxito!'
+            );
+            
+            return $this->redirect($this->generateUrl('fechaespecial'));
 
-            return $this->redirect($this->generateUrl('fechaespecial_edit', array('id' => $id)));
+            
         }
 
         return $this->render('UNTDFReservasAulasBundle:FechaEspecial:edit.html.twig', array(
@@ -257,6 +268,10 @@ class FechaEspecialController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Fecha eliminada con éxito!'
+            );
         }
 
         return $this->redirect($this->generateUrl('fechaespecial'));
