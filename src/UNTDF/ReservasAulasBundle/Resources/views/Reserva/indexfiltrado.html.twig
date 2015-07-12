@@ -127,7 +127,6 @@
 {% block stylesheets %}
     <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.standalone.min.css')}}" />
     <link rel="stylesheet" tyep="text/html" href="{{ asset('bundles/untdfreservasaulas/vendor/tablesorter/css/theme.default.min.css')}}" />
-    
 {% endblock %}
 
 {% block javascripts %}
@@ -169,32 +168,32 @@
                 function (result) {
                     $.each(result, function (i, field) {
                         var tabla_item = "";
-        {# tabla_item = "<tr class='listado_tabla_item'>"; #}
-                                            tabla_item = "<tr>";
-        {# tabla_item = tabla_item + "<td>" + field.id + "</td>"; #}
-                                            tabla_item = tabla_item + "<td>" + field.fecha + "</td>";
-                                            tabla_item = tabla_item + "<td>" + field.horadesde + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.horahasta + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.evento + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.aula + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.estado + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.observacion + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.recursos + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.reservado + "</th>";
-                                            tabla_item = tabla_item + "<td>" + field.docente + "</th>";
-        {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {# tabla_item = "<tr class='listado_tabla_item'>"; #}
+                        tabla_item = "<tr>";
+                        {# tabla_item = tabla_item + "<td>" + field.id + "</td>"; #}
+                        tabla_item = tabla_item + "<td>" + field.fecha + "</td>";
+                        tabla_item = tabla_item + "<td>" + field.horadesde + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.horahasta + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.evento + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.aula + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.estado + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.observacion + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.recursos + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.reservado + "</th>";
+                        tabla_item = tabla_item + "<td>" + field.docente + "</th>";
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                             tabla_item = tabla_item + "<td><ul><a href=\"admin/reserva/" + field.id + "/edit\"><span class=\"glyphicon glyphicon-pencil\"></span>editar</a></ul></th>";
-        {% endif %}
-                            tabla_item = tabla_item + "</tr>";
-                            $(".listado_tabla").append(tabla_item);
+                        {% endif %}
+                        tabla_item = tabla_item + "</tr>";
+                        $(".listado_tabla").append(tabla_item);
                         });
-                        $("#tabla_filtrada").trigger("update");
+                    $("#tabla_filtrada").trigger("update");
                     });
                 });
-        {# agregado para simular la carga inicial #}
-                        $('#btnFiltro').trigger('click');
+            {# agregado para simular la carga inicial #}
+            $('#btnFiltro').trigger('click');
 
-	$('#tabla_filtrada').tablesorter({
+            $('#tabla_filtrada').tablesorter({
 			widgets        : ['zebra', 'columns'],
 			usNumberFormat : false,
 			sortReset      : true,

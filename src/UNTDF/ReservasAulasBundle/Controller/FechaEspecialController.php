@@ -4,6 +4,7 @@ namespace UNTDF\ReservasAulasBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 use UNTDF\ReservasAulasBundle\Entity\FechaEspecial;
 use UNTDF\ReservasAulasBundle\Form\FechaEspecialType;
@@ -15,6 +16,58 @@ use UNTDF\ReservasAulasBundle\Form\FechaEspecialType;
 class FechaEspecialController extends Controller
 {
 
+    public function verificarfechaespecialAction(Request $request)
+    {
+        $fecha = $request->query->get('fecha'); 
+        
+        $consultaDQLselect = 'SELECT FE FROM UNTDFReservasAulasBundle:FechaEspecial FE ';
+        $consultaDQLwhere = "WHERE FE.fecha = '" . $fecha ."'";
+        $consultaDQLorder = ' ORDER BY FE.fecha';
+        $consultaDQL = $consultaDQLselect . $consultaDQLwhere . $consultaDQLorder;
+        
+        error_log($consultaDQL);
+        
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->createQuery($consultaDQL)->getResult();
+        
+        // error_log(implode(" ",$entities));
+        
+        $retorno = array();  
+        if(count($entities)){
+            foreach ($entities as $entity){
+                array_push($retorno, 
+                        array(
+                            'id' => $entity->getId(), 
+                            'fecha' => date_format($entity->getFecha(), 'Y-m-d'),
+                            'descripcion' => $entity->getDescripcion()
+                        )
+                    );
+            }
+        }else{
+            array_push($retorno, 
+                    array(
+                        'id' => '', 
+                        'fecha' => '',
+                        'descripcion' => ''
+                    )
+                );
+        }
+
+        error_log(json_encode($retorno));
+        
+        $response = new Response();
+
+        $response->setContent(json_encode($retorno));
+        $response->setStatusCode(Response::HTTP_OK);
+        $response->headers->set('Content-Type', 'application/json');
+
+        // prints the HTTP headers followed by the content
+        //$response->send();
+
+        return $response;
+    }
+    
+    
     /**
      * Lists all FechaEspecial entities.
      *

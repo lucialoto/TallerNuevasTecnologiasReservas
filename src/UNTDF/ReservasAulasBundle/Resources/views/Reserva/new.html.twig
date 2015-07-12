@@ -20,7 +20,7 @@
             {{ form_start(form) }}
 
             <div class="contain"> 
-                {{ form_label(form.fecha) }} {{ form_errors(form.fecha) }} {{ form_widget(form.fecha) }}
+                {{ form_label(form.fecha) }} {{ form_errors(form.fecha) }} {{ form_widget(form.fecha) }}<div id="{{ form.fecha.vars.id }}_texto" class="alert alert-info" style="display:none;"></div>
                 {{ form_label(form.horadesde) }} {{ form_errors(form.horadesde) }} {{ form_widget(form.horadesde) }} 
                 {{ form_label(form.horahasta) }} {{ form_errors(form.horahasta) }} {{ form_widget(form.horahasta) }} 
                 {{ form_label(form.evento) }} {{ form_errors(form.evento) }} {{ form_widget(form.evento) }} 
@@ -36,26 +36,16 @@
     </div>
 
     <ul class="record_actions">
-        <a class="btn btn-primary" href="{{ path('reserva') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        <a class="btn btn-primary" href="{{ path('reserva_index_filtrado') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
             Volver a la lista
         </a> 
     </ul>
 {% endblock %}
 {% block javascripts -%}
-    <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
-    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    {{ include('UNTDFReservasAulasBundle:Reserva:scriptsjs.html.twig') }}
     <script type="text/javascript">
-        $('select').select2();
-        $('.fechareservada_input_text').datepicker({
-            startDate: "{{ "now"|date('Y-m-d')}}",
-            endDate: "{{ "now"|date_modify('+1 Year')|date('Y-m-d')}}",
-            todayBtn: "linked",
-            format: "yyyy-mm-dd",
-            clearBtn: true,
-            language: "es",
-            orientation: "top auto",
-            autoclose: true
+        $( document ).ready(function() {
+            validarfecha($('#{{ form.fecha.vars.id }}').get(0));
         });
     </script>
 {% endblock %}

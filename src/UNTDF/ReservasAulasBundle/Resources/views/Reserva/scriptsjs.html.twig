@@ -1,0 +1,60 @@
+{# empty Twig template #}
+    <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    <script type="text/javascript">
+        function validarfechaespecial(pFecha, objdestino){
+            var retorno = '';
+            $.getJSON("{{ path('fechaespecial_verificarfechaespecial') }}",
+                {fecha: pFecha
+                },
+                function (result) {
+                    $.each(result, function (i, field) {
+                        retorno = retorno + field.descripcion;
+                        });
+                    if(retorno !== ''){
+                        objdestino.html(objdestino.html() + '<i>Atención: <b>' + retorno + '</b></i>');
+                        objdestino.show();
+                        };
+                    });
+        }
+        function validarfecha(obj){
+            var objdestino = $("#"+obj.id+"_texto");
+            if(objdestino.length){
+                {#
+                var diasemana = new Array(7);
+                diasemana[0] = "Domingo";
+                diasemana[1] = "Lunes";
+                diasemana[2] = "Martes";
+                diasemana[3] = "Miercoles";
+                diasemana[4] = "Jueves";
+                diasemana[5] = "Viernes";
+                diasemana[6] = "Sabado";
+
+                var diaactual = new Date(obj.value);
+                #}
+
+                validarfechaespecial(obj.value, objdestino);
+                
+                {#
+                objdestino.html(diasemana[diaactual.getDay()]);
+                objdestino.show();
+                #}
+            }
+        }        
+    </script>
+    <script type="text/javascript">
+        $('select').select2();
+        $('.fechareservada_input_text').datepicker({
+            startDate: "{{ "now"|date('Y-m-d')}}",
+            endDate: "{{ "now"|date_modify('+1 Year')|date('Y-m-d')}}",
+            todayBtn: "linked",
+            format: "yyyy-mm-dd",
+            clearBtn: true,
+            language: "es",
+            orientation: "top auto",
+            autoclose: true
+        }).on('changeDate', function (ev) {
+            validarfecha(this);
+        });
+    </script>
