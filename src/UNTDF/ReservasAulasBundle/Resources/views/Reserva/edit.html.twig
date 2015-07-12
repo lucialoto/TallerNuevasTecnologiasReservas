@@ -20,7 +20,7 @@
             {{ form_start(edit_form) }}
 
             <div class="contain"> 
-                {{ form_label(edit_form.fecha) }} {{ form_errors(edit_form.fecha) }} {{ form_widget(edit_form.fecha) }}
+                {{ form_label(edit_form.fecha) }} {{ form_errors(edit_form.fecha) }} {{ form_widget(edit_form.fecha) }}<div id="{{ edit_form.fecha.vars.id }}_texto" class="alert alert-info" style="display:none;"></div>
                 {{ form_label(edit_form.horadesde) }} {{ form_errors(edit_form.horadesde) }} {{ form_widget(edit_form.horadesde) }} 
                 {{ form_label(edit_form.horahasta) }} {{ form_errors(edit_form.horahasta) }} {{ form_widget(edit_form.horahasta) }} 
                 {{ form_label(edit_form.evento) }} {{ form_errors(edit_form.evento) }} {{ form_widget(edit_form.evento) }} 
@@ -37,7 +37,7 @@
 
         <ul class="record_actions">
     <li>
-        <a class="btn btn-primary" href="{{ path('reserva') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+        <a class="btn btn-primary" href="{{ path('reserva_index_filtrado') }}"> <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
             Volver a la lista
         </a>            
             
@@ -47,26 +47,10 @@
 </ul>
 {% endblock %}
 {% block javascripts -%}
-    <script src="{{ asset('bundles/untdfreservasaulas/js/vendor/select2/js/select2.min.js')}}"></script>
-    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-    <script src="{{ asset('bundles/untdfreservasaulas/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+    {{ include('UNTDFReservasAulasBundle:Reserva:scriptsjs.html.twig') }}
     <script type="text/javascript">
-        $('select').select2(/*{
-            ajax: {
-                url: "https://127.0.0.1/reservas/web/app_dev.php/admin/recurso/listado",
-                method: "GET",
-                dataType: "json"
-            }
-        }*/);
-        $('.fechareservada_input_text').datepicker({
-            startDate: "{{ "now"|date('Y-m-d')}}",
-            endDate: "{{ "now"|date_modify('+1 Year')|date('Y-m-d')}}",
-            todayBtn: "linked",
-            format: "yyyy-mm-dd",
-            clearBtn: true,
-            language: "es",
-            orientation: "top auto",
-            autoclose: true
+        $( document ).ready(function() {
+            validarfecha($('#{{ edit_form.fecha.vars.id }}').get(0));
         });
     </script>
 {% endblock %}

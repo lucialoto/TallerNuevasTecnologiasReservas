@@ -28,3 +28,8 @@ fechaespecial_delete:
     path:     /{id}/delete
     defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:delete" }
     methods:  [POST, DELETE]
+    
+fechaespecial_verificarfechaespecial:
+    path:     /verificarfechaespecial
+    defaults: { _controller: "UNTDFReservasAulasBundle:FechaEspecial:verificarfechaespecial" }
+    methods: [GET]
