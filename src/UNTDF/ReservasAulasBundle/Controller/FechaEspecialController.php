@@ -25,7 +25,7 @@ class FechaEspecialController extends Controller
         $consultaDQLorder = ' ORDER BY FE.fecha';
         $consultaDQL = $consultaDQLselect . $consultaDQLwhere . $consultaDQLorder;
         
-        error_log($consultaDQL);
+        // error_log($consultaDQL);
         
         $em = $this->getDoctrine()->getManager();
         $entities = $em->createQuery($consultaDQL)->getResult();
@@ -53,7 +53,7 @@ class FechaEspecialController extends Controller
                 );
         }
 
-        error_log(json_encode($retorno));
+        // error_log(json_encode($retorno));
         
         $response = new Response();
 
