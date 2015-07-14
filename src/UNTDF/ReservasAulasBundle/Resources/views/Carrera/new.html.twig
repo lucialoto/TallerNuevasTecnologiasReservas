@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Carrera - Creación</h1>
 
-    {{ form_start(eorm) }}
+    {{ form_start(form) }}
     {{ form_errors(form) }}
 
     <div>
@@ -11,6 +11,8 @@
         {{ form_errors(form.nombre) }}
         {{ form_widget(form.nombre) }}
     </div>
+    
+    <p>----------</p>
                 
     {{ form_end(form) }}
     

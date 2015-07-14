@@ -13,20 +13,32 @@
             {{ form_errors(edit_form.nombre) }}
             {{ form_widget(edit_form.nombre) }}
         </div>
+        
         <p>----------</p>
+        
         <div>
             {{ form_label(edit_form.anio) }}
             {{ form_errors(edit_form.anio) }}
             {{ form_widget(edit_form.anio) }}
         </div>
+        
         <p>----------</p>
+        
         <div>
             {{ form_label(edit_form.cantHoras) }}
             {{ form_errors(edit_form.cantHoras) }}
             {{ form_widget(edit_form.cantHoras) }}
         </div>
+        
         <p>----------</p>
         
+        <div>
+            {{ form_label(edit_form.carreras) }}
+            {{ form_errors(edit_form.carreras) }}
+            {{ form_widget(edit_form.carreras) }}
+        </div>
+        
+        <p>----------</p>
         
         {{ form_end(edit_form) }}
 

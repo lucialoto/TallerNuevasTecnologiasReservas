@@ -6,6 +6,7 @@
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
+    
     <div class="form-group">            
         {{form_label(form.nombre)}}
         {{form_errors(form.nombre)}}
@@ -23,8 +24,6 @@
     <p>----------</p>
     
     {{ form_end(form) }}
-
-
     
             <a class="btn btn-primary" href="{{ path('aulas') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
                 Volver a la lista

@@ -13,21 +13,33 @@
             {{ form_errors(form.nombre) }}
             {{ form_widget(form.nombre) }}
         </div>
+       
         <p>----------</p>
+       
         <div>
             {{ form_label(form.anio) }}
             {{ form_errors(form.anio) }}
             {{ form_widget(form.anio) }}
         </div>
+       
         <p>----------</p>
+       
         <div>
             {{ form_label(form.cantHoras) }}
             {{ form_errors(form.cantHoras) }}
             {{ form_widget(form.cantHoras) }}
         </div>
+       
         <p>----------</p>
+
+        <div>
+            {{ form_label(form.carreras) }}
+            {{ form_errors(form.carreras) }}
+            {{ form_widget(form.carreras) }}
+        </div>
         
-        
+        <p>----------</p>
+       
         {{ form_end(form) }}
 
     <a class="btn btn-primary" href="{{ path('curso') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>

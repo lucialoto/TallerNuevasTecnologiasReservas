@@ -152,9 +152,7 @@ class AulaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array(
-                    'class' => 'btn btn-primary')
-                ));
+        $form->add('submit', 'submit', array('label' => 'Actualizar'));
 
         return $form;
     }
