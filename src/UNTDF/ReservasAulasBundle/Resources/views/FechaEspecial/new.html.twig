@@ -7,7 +7,26 @@
 {% block body -%}
     <h1>Fechas Especiales - Creación</h1>
 
-    {{ form(form) }}
+    {{ form_start(orm) }}
+        {{ form_errors(form) }}
+        
+        <div>
+            {{ form_label(form.fecha) }}
+            {{ form_errors(form.fecha) }}
+            {{ form_widget(form.fecha) }}
+        </div>
+        
+        <p>----------</p>
+        
+        <div>
+            {{ form_label(form.descripcion) }}
+            {{ form_errors(form.descripcion) }}
+            {{ form_widget(form.descripcion) }}
+        </div>
+        
+        <p>----------</p>
+                
+        {{ form_end(form) }}
 
         
         <a class="btn btn-primary" href="{{ path('fechaespecial') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>

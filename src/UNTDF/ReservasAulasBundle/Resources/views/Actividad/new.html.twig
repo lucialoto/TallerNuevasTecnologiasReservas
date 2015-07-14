@@ -2,7 +2,26 @@
 {% block body -%}
     <h1>Actividad - Creación</h1>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        
+        <div>
+            {{ form_label(form.nombre) }}
+            {{ form_errors(form.nombre) }}
+            {{ form_widget(form.nombre) }}
+        </div>
+        
+        <p>----------</p>
+        
+        <div>
+            {{ form_label(form.tipoactividad) }}
+            {{ form_errors(form.tipoactividad) }}
+            {{ form_widget(form.tipoactividad) }}
+        </div>
+        
+        <p>----------</p>
+                
+        {{ form_end(form) }}
 
         <a class="btn btn-primary" href="{{ path('actividad') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
             Volver a la lista

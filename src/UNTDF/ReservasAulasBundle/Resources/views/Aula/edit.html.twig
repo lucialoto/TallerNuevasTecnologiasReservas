@@ -7,21 +7,22 @@
 
     
         {{ form_errors(edit_form) }}
-    
-
-    
+        
+        <div>
         {{ form_label(edit_form.nombre) }}
         {{ form_errors(edit_form.nombre) }}
         {{ form_widget(edit_form.nombre) }}
-    
-    
-    
+        </div>
+        
+        <p>----------</p>
+        
+        <div>
         {{ form_label(edit_form.edificio) }}
         {{ form_errors(edit_form.edificio) }}
         {{ form_widget(edit_form.edificio) }}
-    
-    
-
+        </div>
+        
+        <p>----------</p>
 
     {{ form_end(edit_form) }}
        

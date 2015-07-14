@@ -11,15 +11,17 @@
             {{ form_errors(edit_form.nombre) }}
             {{ form_widget(edit_form.nombre) }}
         </div>
+        
         <p>----------</p>
+        
         <div>
             {{ form_label(edit_form.cantidadHoras) }}
             {{ form_errors(edit_form.cantidadHoras) }}
             {{ form_widget(edit_form.cantidadHoras) }}
         </div>
+        
         <p>----------</p>
-        
-        
+                
         {{ form_end(edit_form) }}
 
         <a class="btn btn-primary" href="{{ path('tipoactividad') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>

@@ -5,7 +5,30 @@
 {% block body -%}
     <h1>Curso - Creación</h1>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        
+        <div>
+            {{ form_label(form.nombre) }}
+            {{ form_errors(form.nombre) }}
+            {{ form_widget(form.nombre) }}
+        </div>
+        <p>----------</p>
+        <div>
+            {{ form_label(form.anio) }}
+            {{ form_errors(form.anio) }}
+            {{ form_widget(form.anio) }}
+        </div>
+        <p>----------</p>
+        <div>
+            {{ form_label(form.cantHoras) }}
+            {{ form_errors(form.cantHoras) }}
+            {{ form_widget(form.cantHoras) }}
+        </div>
+        <p>----------</p>
+        
+        
+        {{ form_end(form) }}
 
     <a class="btn btn-primary" href="{{ path('curso') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
             Volver a la lista

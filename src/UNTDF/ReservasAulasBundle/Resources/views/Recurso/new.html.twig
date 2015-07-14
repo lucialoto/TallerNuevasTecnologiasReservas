@@ -3,7 +3,16 @@
 {% block body -%}
     <h1>Recurso - Creación</h1>
 
-    {{ form(form) }}
+    {{ form_start(eorm) }}
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.nombre) }}
+        {{ form_errors(form.nombre) }}
+        {{ form_widget(form.nombre) }}
+    </div>
+                
+    {{ form_end(form) }}
 
         
         <a class="btn btn-primary" href="{{ path('recurso') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>

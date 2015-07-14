@@ -3,7 +3,26 @@
 {% block body -%}
     <h1>Docente - Creación</h1>
 
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        
+        <div>
+            {{ form_label(form.nombre) }}
+            {{ form_errors(form.nombre) }}
+            {{ form_widget(form.nombre) }}
+        </div>
+        
+        <p>----------</p>
+        
+        <div>
+            {{ form_label(form.dni) }}
+            {{ form_errors(form.dni) }}
+            {{ form_widget(form.dni) }}
+        </div>
+        
+        <p>----------</p>
+        
+        {{ form_end(form) }}
 
         
         <a class="btn btn-primary" href="{{ path('docente') }}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
