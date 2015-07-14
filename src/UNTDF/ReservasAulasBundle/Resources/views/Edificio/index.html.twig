@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Edificio</h1>
+    <h1>Edificios</h1>
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="alert alert-success flash-notice">
             <span aria-hidden="true">{{ flashMessage }}</span>
