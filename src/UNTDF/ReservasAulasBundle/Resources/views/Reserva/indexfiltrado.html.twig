@@ -8,11 +8,6 @@
                 <div class="panel-heading">
                     <h1>Listado de Reservas</h1>
                 </div>
-                {% for flashMessage in app.session.flashbag.get('notice') %}
-                    <div class="alert alert-danger flash-notice">
-                        <span aria-hidden="true">{{ flashMessage }}</span>
-                    </div>
-                {% endfor %}
                 <div class="panel-body">    
                     <form id="formulariobase">
 
@@ -69,6 +64,12 @@
         <div class="col-md-11 col-md-offset-1">    
             <p><button id="btnFiltro" class="btn btn-default"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Aplicar Filtro</button></p>
 
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="alert alert-success flash-notice">
+                        <span aria-hidden="true">{{ flashMessage }}</span>
+                    </div>
+            {% endfor %}
+            
             {# <table id="tabla_filtrada" class="table table-bordered tablesorter tablesorter-bootstrap"> #}
             {# <table id="tabla_filtrada" class="table table-bordered tablesorter tablesorter-bootstrap"> #}
             <table id="tabla_filtrada" class="tablesorter tablesorter-bootstrap table table-bordered hasFilters table-striped" role="grid">

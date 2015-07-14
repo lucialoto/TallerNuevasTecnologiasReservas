@@ -3,7 +3,7 @@
 {% block body -%}
     <h1>Reservas</h1>
     {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="alert alert-danger flash-notice">
+        <div class="alert alert-success flash-notice">
             <span aria-hidden="true">{{ flashMessage }}</span>
         </div>
     {% endfor %}
